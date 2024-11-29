@@ -1,0 +1,60 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+.DS_Store
+dist
+dist-ssr
+coverage
+*.local
+
+/cypress/videos/
+/cypress/screenshots/
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+*.tsbuildinfo
+
+.certs/*
+.scannerwork
+.DS_Store
+node_modules
+/dist
+/coverage
+/__tests__/**/__snapshots__
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
+# Jest Sonar ignore
+test-report.xml
+test-report.html
+sonar
+
+# Trivy cache
+.trivycache
+
+#mocks
+public/mocks/*.js*
+
+# package-lock, ya que es susceptible de conflictos
+package-lock.json

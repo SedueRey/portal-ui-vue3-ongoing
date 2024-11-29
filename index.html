@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="/env-config.js?oauth"></script>
+    <link
+      rel="icon"
+      href="/favicon.ico"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta
+      name="msapplication-TileColor"
+      content="#bd2a33"
+    />
+    <meta
+      name="msapplication-TileImage"
+      content="/ms-icon-144x144.png"
+    />
+    <meta
+      name="theme-color"
+      content="#bd2a33"
+    />
+    <title>Portal de Servicios de la Universidad de Murcia</title>
+    <meta
+      name="description"
+      content="Portal de Servicios de la Universidad de Murcia"
+    />
+    <style>
+      noscript {
+        margin-top: 5rem;
+        display: block;
+        text-align: center;
+      }
+    </style>
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="<%= BASE_URL %>fa/css/all.min.css"
+      />
+    </noscript>
+  </head>
+  <body>
+    <noscript>
+      <strong
+        >Sentimos indicar que el Portal de Servicios de la Universidad de Murcia necesita JavaScript
+        para proporcionar un correcto funcionamiento.<br />
+        Por favor, habilítelo para continuar.
+      </strong>
+    </noscript>
+    <div id="app"></div>
+    <script>
+      (function () {
+        setTimeout(() => {
+          const cssMain = document.createElement('link');
+          cssMain.href = '/fa-6/css/all.min.css';
+          cssMain.rel = 'stylesheet';
+          cssMain.type = 'text/css';
+          document.getElementsByTagName('head')[0].appendChild(cssMain);
+        }, 1000);
+      })();
+    </script>
+    <script
+      type="module"
+      src="/src/main.ts"
+    ></script>
+  </body>
+</html>
