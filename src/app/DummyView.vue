@@ -1,0 +1,1 @@
+<template>Dummy View</template>

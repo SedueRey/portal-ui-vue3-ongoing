@@ -1,0 +1,40 @@
+{
+  "en": {
+    "title": "Become user",
+    "description": "Enter a user ID and click on \"Become a user\" to access as that user",
+    "label": "User email",
+    "button": "Become a user",
+    "forbidden_title": "Action required",
+    "forbidden_message": "To access this service it is required a 2-step authentication. In order to do it, you are being automatically {genderText} to the identification gateway.",
+    "forbidden_title_sub": "Identification gateway.",
+    "female_text": "redirected",
+    "male_text": "redirected",
+    "mix_text": "redirected",
+    "error423": "Se ha producido un error al tomar sus datos de la plataforma de autenticación. Pruebe pasado un tiempo e intente borrar la caché de su navegador.",
+    "safariTitle": "Te damos la bienvenida a Mi campus UMU",
+    "safariText": "Información, servicios y trámites en línea de la Universidad de Murcia.",
+    "safariLink": "¿Qué debes saber de Mi campus?",
+    "safariButton": "Autenticarse en entrada.um.es",
+    "safariCau1": "¿Problemas con la plataforma? Contacta con el CAU de Atica",
+    "safariCau2": "o escribe a"
+  },
+  "es": {
+    "title": "Suplantar usuario",
+    "description": "Introduzca un ID de usuario y haga clic en \"Convertirse en usuario\" para acceder como ese usuario",
+    "label": "Correo electrónico del usuario",
+    "button": "Convertirse en usuario",
+    "forbidden_title": "Acción requerida",
+    "forbidden_message": "Para acceder a este servicio es necesaria una autenticación en 2 pasos por lo que vas a ser {genderText} de forma automática a la pasarela de identificación",
+    "forbidden_title_sub": "Pasarela de identificación",
+    "female_text": "dirigida",
+    "male_text": "dirigido",
+    "mix_text": "dirigido/a",
+    "error423": "Se ha producido un error al tomar sus datos de la plataforma de autenticación. Pruebe pasado un tiempo e intente borrar la caché de su navegador.",
+    "safariTitle": "Te damos la bienvenida a Mi campus UMU",
+    "safariText": "Información, servicios y trámites en línea de la Universidad de Murcia.",
+    "safariLink": "¿Qué debes saber de Mi campus?",
+    "safariButton": "Autenticarse en entrada.um.es",
+    "safariCau1": "¿Problemas con la plataforma? Contacta con el CAU de Atica",
+    "safariCau2": "o escribe a"
+  }
+}

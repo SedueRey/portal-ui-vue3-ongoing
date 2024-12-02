@@ -1,5 +1,7 @@
 import { URL, fileURLToPath } from 'node:url';
 import { defineConfig, loadEnv } from 'vite';
+import { dirname, resolve } from 'node:path';
+import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite';
 import basicSsl from '@vitejs/plugin-basic-ssl';
 import { readFileSync } from 'fs';
 import vue from '@vitejs/plugin-vue';
@@ -26,7 +28,19 @@ export default (env: { mode: string }) => {
   const host = process?.env?.VITE_APP_LOCAL_URL || '0.0.0.0';
   return defineConfig({
     base: './',
-    plugins: mode === 'development' ? [vue(), basicSsl(), vueDevTools()] : [vue(), basicSsl()],
+    plugins:
+      mode === 'development'
+        ? [
+            vue(),
+            basicSsl(),
+            vueDevTools(),
+            VueI18nPlugin({
+              /* options */
+              // locale messages resource pre-compile option
+              include: resolve(dirname(fileURLToPath(import.meta.url)), './app/shared/locales/**'),
+            }),
+          ]
+        : [vue(), basicSsl()],
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
