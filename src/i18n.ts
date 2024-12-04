@@ -1,4 +1,4 @@
-import { appModules } from './app.i18n.modules';
+import { appModules } from './app/app.i18n.modules';
 import { createI18n } from 'vue-i18n';
 import { nextTick } from 'vue';
 

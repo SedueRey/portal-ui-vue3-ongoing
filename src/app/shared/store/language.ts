@@ -1,6 +1,6 @@
 import { type Ref, ref } from 'vue';
 import { defineStore } from 'pinia';
-import sharedApi from '../shared.api';
+import sharedApi from '../api/shared.api';
 import { useI18n } from 'vue-i18n';
 
 export const useLanguageStore = defineStore('language', () => {

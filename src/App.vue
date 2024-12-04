@@ -6,7 +6,7 @@
       <VueSkipTo to="#carriles" label="Saltar hasta los carriles" />
     </span>
     <div>Aquí irá la cabecera -{{ isLogged }}-</div>
-    <button @click="login" class="pose__button">Miau</button>
+    <Button @click="login" label="Miau" />
     <div>{{ $t('safariButton') }}</div>
     <div v-if="!isLogged" class="app__loading"></div>
     <main class="app_inner" v-cloak>
@@ -23,6 +23,7 @@
 
 <script setup lang="ts">
   import { type Ref, onBeforeMount, ref } from 'vue';
+  import { Button } from 'primevue';
   import { RouterView } from 'vue-router';
   import { jwtDecode } from 'jwt-decode';
   import { storeToRefs } from 'pinia';
