@@ -17,13 +17,10 @@ import { setupI18n } from './i18n';
 import { upPreset } from './app/mc.primevue4.preset';
 
 const app = createApp(App);
-const i18n = await setupI18n();
 
 app.use(createPinia());
 app.use(router);
 app.use(VueSkipTo);
-app.use(i18n);
-
 // Adaptado a PrimeVue V4
 app.use(PrimeVue, {
   ripple: true,
@@ -41,4 +38,7 @@ app.directive('tooltip', Tooltip);
 app.directive('badge', BadgeDirective);
 app.directive('ripple', Ripple);
 
-app.mount('#app');
+setupI18n().then((i18n) => {
+  app.use(i18n);
+  app.mount('#app');
+});
