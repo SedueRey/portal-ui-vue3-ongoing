@@ -1,29 +1,10 @@
+import type { JWTLoginError, JWTStructure } from '../api/auth.contracts';
 import { type Ref, computed, ref } from 'vue';
-import authApi from '../auth.api';
+import authApi from '../api/auth.api';
 import authCrypto from '../utils/crypto';
 import { defineStore } from 'pinia';
 import { jwtDecode } from 'jwt-decode';
 import navigateTo from '../utils/navigateTo';
-
-export interface JWTStructure {
-  aud: string;
-  auth_type: string;
-  authenticationMethod: string[];
-  exp: number;
-  grant_type: string;
-  iat: number;
-  isFromTrustedMultifactorAuthentication: 'true' | 'false';
-  iss: string;
-  original_subject: string;
-  scope: string;
-  sub: string;
-  userAgent: string;
-}
-
-export interface JWTLoginError {
-  code: string;
-  info: string;
-}
 
 const isLoaMedium = (tokenData) => {
   return (
@@ -44,7 +25,7 @@ export const useAuthStore = defineStore('auth', () => {
   const needs2FA: Ref<boolean> = ref(false);
   const valid2FA: Ref<boolean> = ref(false);
   const cas: string = authApi.endpoints().cas;
-  // Mutaciones
+  // Antiguas mutaciones
   const setToken = (ticket: string): void => {
     token.value = ticket;
     tokenData.value = jwtDecode(ticket);
@@ -87,16 +68,13 @@ export const useAuthStore = defineStore('auth', () => {
     await authApi.login(true);
   };
   const accessToken = async (code: string) => {
-    console.log('accessToken', code);
     const loaLoginRoutePath = window.localStorage.getItem('POSE_FORBIDDEN2FA_ROUTE_KEY') || '';
     if (loaLoginRoutePath) {
       window.localStorage.setItem('POSE_LOGIN_ROUTE_KEY', loaLoginRoutePath);
       window.localStorage.removeItem('POSE_FORBIDDEN2FA_ROUTE_KEY');
     }
-    console.log('accessToken antes del try');
     try {
       const response = await authApi.getToken(code, loaLoginRoutePath || false);
-      console.log('response', JSON.parse(JSON.stringify(response?.data)));
       if (response?.data) {
         const { data } = response;
 
@@ -112,7 +90,6 @@ export const useAuthStore = defineStore('auth', () => {
           }
           window.localStorage.removeItem('POSE_LOGIN_ROUTE_KEY');
           const url = `${authApi.endpoints().originalPath}/#/${lastRoutePath}`;
-          console.log('Navigate to url', url);
           navigateTo(url);
         } else {
           navigateTo(authApi.endpoints().originalPath);

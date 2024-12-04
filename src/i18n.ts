@@ -1,17 +1,19 @@
+import { appModules } from './app.i18n.modules';
 import { createI18n } from 'vue-i18n';
 import { nextTick } from 'vue';
 
 export const SUPPORT_LOCALES = ['es', 'en'];
 
-export function setupI18n(options = { locale: 'es' }) {
+export async function setupI18n(options = { locale: 'es' }) {
   const i18n = createI18n({
     ...options,
     legacy: false,
     fallbackLocale: 'es',
     silentTranslationWarn: true,
+    globalInjection: true,
   });
   setI18nLanguage(i18n, options.locale);
-  loadLocaleMessages(i18n, options.locale);
+  await loadLocaleMessages(i18n, options.locale);
   return i18n;
 }
 
@@ -29,10 +31,11 @@ export function setI18nLanguage(i18n, locale) {
 
 export async function loadLocaleMessages(i18n, locale) {
   // load locale messages with dynamic import
-  const messages = await import(`./app/shared/locales/${locale}.json`);
-
-  // set locale and locale message
-  i18n.global.setLocaleMessage(locale, messages.default);
-
+  let allMessages = {};
+  for (const module of appModules) {
+    const messages = await import(`./app/${module}/locales/${locale}.json`);
+    allMessages = { ...allMessages, ...messages.default };
+  }
+  i18n.global.setLocaleMessage(locale, allMessages);
   return nextTick();
 }

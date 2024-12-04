@@ -1,5 +1,6 @@
 import Forbidden2FA from './views/Forbidden2FA.vue';
 import LoginView from './views/LoginView.vue';
+import type { RouteRecordRaw } from 'vue-router';
 
 const FeatureFlag = () => import('./views/FeatureFlag.vue');
 
@@ -32,4 +33,4 @@ export default [
       application: 'forbidden',
     },
   },
-];
+] as RouteRecordRaw[];

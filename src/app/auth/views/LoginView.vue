@@ -8,10 +8,8 @@
   const authStore = useAuthStore();
 
   onBeforeMount(async () => {
-    console.log('onBeforeMount LoginView');
     const params = new URLSearchParams(window.location.search);
     const code = params.get('code');
-    console.log('code', code);
     if (!!code) {
       await authStore.accessToken(code);
     }

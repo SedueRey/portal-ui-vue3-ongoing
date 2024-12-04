@@ -7,10 +7,11 @@ import router from './router';
 import { setupI18n } from './i18n';
 
 const app = createApp(App);
+const i18n = await setupI18n();
 
 app.use(createPinia());
 app.use(router);
 app.use(VueSkipTo);
-app.use(setupI18n());
+app.use(i18n);
 
 app.mount('#app');

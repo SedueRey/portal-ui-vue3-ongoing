@@ -1,45 +1,24 @@
 <template>
-  <span class="toContentContainer">
-    <VueSkipTo
-      to="#content"
-      label="Ir al contenido"
-    />
-    <VueSkipTo
-      to="#myevents"
-      label="Saltar hasta la agenda"
-    />
-    <VueSkipTo
-      to="#carriles"
-      label="Saltar hasta los carriles"
-    />
-  </span>
-  <div>Aquí irá la cabecera -{{ isLogged }}-</div>
-  <button
-    @click="login"
-    class="pose__button"
-  >
-    Miau
-    {{ $t('safariButton') }}
-  </button>
-  <div
-    v-if="!isLogged"
-    class="app__loading"
-  ></div>
-  <main
-    class="app_inner"
-    v-cloak
-  >
-    <div
-      class="app_view"
-      id="app_view"
-    >
-      <!-- router -->
-      <div id="content">
-        <router-view />
+  <div v-if="isLoaded">
+    <span class="toContentContainer">
+      <VueSkipTo to="#content" label="Ir al contenido" />
+      <VueSkipTo to="#myevents" label="Saltar hasta la agenda" />
+      <VueSkipTo to="#carriles" label="Saltar hasta los carriles" />
+    </span>
+    <div>Aquí irá la cabecera -{{ isLogged }}-</div>
+    <button @click="login" class="pose__button">Miau</button>
+    <div>{{ $t('safariButton') }}</div>
+    <div v-if="!isLogged" class="app__loading"></div>
+    <main class="app_inner" v-cloak>
+      <div class="app_view" id="app_view">
+        <!-- router -->
+        <div id="content">
+          <router-view />
+        </div>
+        <!-- end router -->
       </div>
-      <!-- end router -->
-    </div>
-  </main>
+    </main>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -51,6 +30,7 @@
 
   const { isLogged, tokenData } = storeToRefs(useAuthStore());
   const apptoken: Ref<string | null | undefined> = ref(null);
+  const isLoaded: Ref<boolean> = ref(false);
   const isSafari = () => {
     return window._env_.isSafari || false;
   };
@@ -70,7 +50,6 @@
   };
 
   onBeforeMount(async () => {
-    console.log('onBeforeMount');
     apptoken.value = sessionStorage.getItem('accesstoken');
     if (apptoken.value) {
       const tokenData = jwtDecode(apptoken.value);
@@ -87,9 +66,8 @@
         //this.$logger.warn('Accediendo mediante safari');
       }
     }
+    isLoaded.value = true;
   });
 </script>
-
-<i18n src="./app/auth/locales/i18n.json"></i18n>
 
 <style lang="scss"></style>

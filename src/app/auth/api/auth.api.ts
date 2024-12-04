@@ -1,6 +1,6 @@
-import authCrypto from './utils/crypto';
+import authCrypto from '../utils/crypto';
 import axios from 'axios';
-import navigateTo from './utils/navigateTo';
+import navigateTo from '../utils/navigateTo';
 
 const endpoints = {
   logout: `${window._env_.SSO_URL}/cas/logout`,

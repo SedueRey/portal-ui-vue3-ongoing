@@ -41,7 +41,7 @@
   });
 
   const timePassed: Ref<number> = ref(0);
-  const timerInterval: Ref<number | null> = ref(null);
+  const timerInterval: Ref<null | ReturnType<typeof setTimeout>> = ref(null);
 
   const timeLeft = computed(() => props.timeLimit - timePassed.value);
 
