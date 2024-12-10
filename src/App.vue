@@ -90,6 +90,7 @@
   });
 </script>
 
-<i18n src="./app/auth/locales/i18n.json"></i18n>
+<i18n locale="es" src="./app/auth/locales/i18n.es.json"></i18n>
+<i18n locale="en" src="./app/auth/locales/i18n.en.json"></i18n>
 
 <style lang="scss"></style>
