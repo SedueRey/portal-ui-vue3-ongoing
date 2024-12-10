@@ -1,0 +1,152 @@
+@import './vars';
+
+.vuecal.vuecal--um-theme {
+  box-shadow: none;
+
+  .vuecal__bg.vuecal__flex {
+    overflow: hidden;
+  }
+
+  .vuecal__cell {
+    font-size: 0.875rem;
+    .vuecal__cell-date {
+      font-weight: 500;
+      padding: 0.5rem;
+    }
+  }
+
+  .vuecal__cell--has-events:not(.vuecal__cell--out-of-scope):not(.vuecal__cell--today) {
+    color: var(--main-text-color);
+    font-weight: 500;
+  }
+
+  .vuecal__cell--out-of-scope {
+    color: #787474;
+    .vuecal__cell-date {
+      font-weight: 100;
+    }
+  }
+
+  .vuecal__heading {
+    font-size: 0.875rem;
+  }
+
+  .vuecal__header {
+    margin: 0 0 0.5rem 0;
+  }
+
+  .vuecal__header button {
+    font-size: 0.875rem;
+  }
+
+  // .vuecal__menu,
+  .vuecal__cell-events-count {
+    background-color: var(--main-color);
+    color: var(--card-bg-color);
+    font-family: monospace;
+    font-size: 0;
+    left: 50%;
+    padding: 0;
+    bottom: 0;
+    transform: scale(1) translate(-50%, 100%);
+    box-sizing: unset;
+    width: 4px;
+    height: 4px;
+    max-width: 4px;
+    min-width: 4px;
+    max-height: 4px;
+    min-height: 4px;
+  }
+
+  .vuecal__cell:before {
+    border-color: transparent;
+  }
+
+  .vuecal__title-bar {
+    background-color: transparent;
+    > .vuecal__arrow,
+    > .vuecal__title {
+      color: var(--main-text-color);
+      button {
+        color: var(--main-text-color);
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .vuecal__cell--today {
+    background-color: var(--main-color);
+    border-radius: var(--card-border-radius);
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .vuecal__flex.vuecal__cells.day-view {
+    .vuecal__cell--today {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+    .vuecal__event.vuecal__event--focus {
+      height: auto !important;
+    }
+  }
+
+  .vuecal__flex.vuecal__cells.week-view {
+    .vuecal__cell--today {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .vuecal__no-event {
+      font-size: 0.75rem;
+      line-height: 0.9;
+    }
+
+    .vuecal__event {
+      transition: height 0.15 ease-in-out;
+    }
+
+    .vuecal__event.vuecal__event--focus {
+      height: auto !important;
+    }
+  }
+
+  .vuecal__time-cell-label {
+    color: var(--title-color);
+    display: block;
+    padding: 0.5rem 0 0 0;
+    font-size: 0.75rem;
+  }
+
+  .vuecal__cell--current {
+    background-color: var(--highlight-color);
+    border-radius: var(--card-border-radius);
+    color: var(--main-color);
+  }
+
+  &:not(.vuecal--day-view) .vuecal__cell--selected:not(.vuecal__cell--today) {
+    background-color: var(--highlight-color);
+    color: var(--main-color);
+    font-weight: 500;
+    border-radius: var(--card-border-radius);
+    .vuecal__cell-events-count {
+      background-color: var(--highlight-color);
+    }
+  }
+
+  /* Cells and buttons get highlighted when an event is dragged over it. */
+  .vuecal__cell--highlighted:not(.vuecal__cell--has-splits),
+  .vuecal__cell-split--highlighted {
+    background-color: var(--main-color);
+  }
+
+  .vuecal__arrow.vuecal__arrow--highlighted,
+  .vuecal__view-btn.vuecal__view-btn--highlighted {
+    background-color: var(--main-color);
+  }
+
+  .vuecal__today-btn span.today.button__secondary {
+    border: 1px solid var(--main-color);
+    border-radius: var(--card-border-radius);
+    font-size: 0.8em;
+    margin: 0;
+    padding: 0.55rem 0.8rem;
+  }
+}

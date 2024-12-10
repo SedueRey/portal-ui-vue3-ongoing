@@ -1,3 +1,12 @@
 {
-  "appname": "UM service site"
+  "appname": "UM service site",
+  "weblink": "Web link",
+  "markRead": "Mark as Read",
+  "markAllRead": "Mark all as Read",
+  "showNots": "Show notifications",
+  "noNots": "There's no new notifications",
+  "logout": "Logout",
+  "home": "My campus",
+  "Not Found": "Not found",
+  "Unauthorized": "Unauthorized"
 }

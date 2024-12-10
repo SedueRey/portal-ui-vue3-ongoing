@@ -1,1 +1,1 @@
-export const appModules = ['auth', 'shared'];
+export const appModules = ['auth', 'shared', 'user'];

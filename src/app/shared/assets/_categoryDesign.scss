@@ -1,0 +1,19 @@
+.is__catIdentifier {
+  @for $i from 1 through 5 {
+    &__#{$i} {
+      .card__triangle,
+      .detail__triangle::after,
+      .detail__disambiguatingDescription::after,
+      .detail__outsideLink > a,
+      .detail__outsideLink > .buttonVisit__link {
+        background-color: var(--category#{$i}-color);
+      }
+      .cardChildren__ariatext {
+        color: var(--category#{$i}-color);
+      }
+      .card__logo {
+        border-bottom-color: var(--category#{$i}-color);
+      }
+    }
+  }
+}

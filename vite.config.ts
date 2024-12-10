@@ -26,7 +26,6 @@ export default (env: { mode: string }) => {
   }
   process.env = { ...process.env, ...envCustomVariables };
   const host = process?.env?.VITE_APP_LOCAL_URL || '0.0.0.0';
-  console.log(path.resolve(__dirname, './src/app/auth/locales/**'));
   return defineConfig({
     base: './',
     plugins:
@@ -34,12 +33,12 @@ export default (env: { mode: string }) => {
         ? [
             vue(),
             basicSsl(),
-            vueDevTools(),
             VueI18nPlugin({
               /* options */
               // locale messages resource pre-compile option
               include: [path.resolve(__dirname, './src/locales/**')],
             }),
+            vueDevTools(),
           ]
         : [vue(), basicSsl()],
     resolve: {
@@ -50,10 +49,10 @@ export default (env: { mode: string }) => {
     css: {
       preprocessorOptions: {
         scss: {
-          api: 'modern',
-          importers: [
-            // ...
-          ],
+          api: 'modern-compiler',
+          additionalData: '@import "@/app/shared/assets/_vars.scss";',
+          silenceDeprecations: ['legacy-js-api', 'mixed-decls', 'import'],
+          quietDeps: true,
         },
       },
     },

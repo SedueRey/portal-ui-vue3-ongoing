@@ -1,4 +1,4 @@
-import { type Afiliacion } from '../user.types';
+import type { Afiliacion, UserLocations } from '../user.types';
 
 export interface WhoamiUserDataResponse {
   afiliacion: Afiliacion;
@@ -9,7 +9,7 @@ export interface WhoamiUserDataResponse {
   apellido1: string;
   dni: string;
   email: string;
-  extensionsLocations: Array<{ [key: string]: string }>;
+  extensionsLocations: UserLocations[];
   isAdmin?: boolean;
   newUser: string;
   profile: string[];
@@ -20,4 +20,12 @@ export interface WhoamiUserDataResponse {
   unitDescriptions: string[];
   unitsByUser: string[];
   uuid: string;
+}
+
+export interface NotiMovilNotificacionResponse {
+  nombre: string;
+  descripcion: string;
+  general: boolean;
+  personal: boolean;
+  codigo: number;
 }

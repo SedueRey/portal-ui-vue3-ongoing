@@ -15,5 +15,10 @@
   "safariLink": "¿Qué debes saber de Mi campus?",
   "safariButton": "Autenticarse en entrada.um.es",
   "safariCau1": "¿Problemas con la plataforma? Contacta con el CAU de Atica",
-  "safariCau2": "o escribe a"
+  "safariCau2": "o escribe a",
+  "apiumTitle": "Carga de datos desde ApiUM.",
+  "incremental": "Carga incremental",
+  "total": "Carga total",
+  "becomeUser": "Suplantar usuarios",
+  "comeBack": "Dejar de suplantar"
 }

@@ -14,6 +14,6 @@ export interface JWTStructure {
 }
 
 export interface JWTLoginError {
-  code: string;
+  code: number;
   info: string;
 }

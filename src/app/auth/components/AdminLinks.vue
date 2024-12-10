@@ -42,25 +42,6 @@
   };
 </script>
 
-<i18n>
-{
-  "en": {
-    "apiumTitle": "Data transfer from ApiUM.",
-    "incremental": "Incremental transfer",
-    "total": "Transfer all data",
-    "becomeUser": "Become user",
-    "comeBack": "Stop impersonation"
-  },
-  "es": {
-    "apiumTitle": "Carga de datos desde ApiUM.",
-    "incremental": "Carga incremental",
-    "total": "Carga total",
-    "becomeUser": "Suplantar usuarios",
-    "comeBack": "Dejar de suplantar"
-  }
-}
-</i18n>
-
 <style lang="scss">
   .adminLinks {
     &__menuitem {
