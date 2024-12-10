@@ -2,6 +2,13 @@ import authCrypto from './utils/crypto';
 import axios from 'axios';
 import navigateTo from './utils/navigateTo';
 
+window._env_ = {
+  SSO_URL: 'https://sso.example.com',
+  API_UM_URL: 'https://api.example.com/um',
+  POSE_API_URL: 'https://api.example.com/pose',
+  isSafari: false,
+};
+
 const endpoints = {
   logout: `${window._env_.SSO_URL}/cas/logout`,
   login: `${window._env_.SSO_URL}/cas/oidc/authorize`,
