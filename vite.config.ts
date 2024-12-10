@@ -3,7 +3,7 @@ import { defineConfig, loadEnv } from 'vite';
 import { dirname, resolve } from 'node:path';
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite';
 import basicSsl from '@vitejs/plugin-basic-ssl';
-import { readFileSync } from 'fs';
+// import { readFileSync } from 'fs';
 import vue from '@vitejs/plugin-vue';
 import vueDevTools from 'vite-plugin-vue-devtools';
 
@@ -11,6 +11,7 @@ import vueDevTools from 'vite-plugin-vue-devtools';
 export default (env: { mode: string }) => {
   const mode: string = env.mode;
   const envCustomVariables = loadEnv(mode, './');
+  /*
   if (mode === 'development' && Object.entries(envCustomVariables).length === 0) {
     throw new Error('[ No hay variables de entorno definidas para el proxy ]');
   }
@@ -25,7 +26,8 @@ export default (env: { mode: string }) => {
     }
   }
   process.env = { ...process.env, ...envCustomVariables };
-  const host = process?.env?.VITE_APP_LOCAL_URL || '0.0.0.0';
+  */
+  const host = /*process?.env?.VITE_APP_LOCAL_URL ||*/ '0.0.0.0';
   return defineConfig({
     base: './',
     plugins:
@@ -40,7 +42,11 @@ export default (env: { mode: string }) => {
               include: resolve(dirname(fileURLToPath(import.meta.url)), './app/shared/locales/**'),
             }),
           ]
-        : [vue(), basicSsl()],
+        : [vue(), basicSsl(),VueI18nPlugin({
+          /* options */
+          // locale messages resource pre-compile option
+          include: resolve(dirname(fileURLToPath(import.meta.url)), './app/shared/locales/**'),
+        }),],
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
@@ -48,6 +54,7 @@ export default (env: { mode: string }) => {
     },
     server: {
       host,
+      /*
       https: {
         key,
         cert,
@@ -58,6 +65,7 @@ export default (env: { mode: string }) => {
           changeOrigin: true,
         },
       },
+      */
     },
   });
 };
