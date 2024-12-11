@@ -35,7 +35,7 @@
     margin: 0 0 0.5rem 0;
   }
 
-  .vuecal__header button {
+  .vuecal__header button{
     font-size: 0.875rem;
   }
 
@@ -64,8 +64,8 @@
 
   .vuecal__title-bar {
     background-color: transparent;
-    > .vuecal__arrow,
-    > .vuecal__title {
+    >.vuecal__arrow,
+    >.vuecal__title {
       color: var(--main-text-color);
       button {
         color: var(--main-text-color);
@@ -77,12 +77,12 @@
   .vuecal__cell--today {
     background-color: var(--main-color);
     border-radius: var(--card-border-radius);
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255,255,255,0.9);
   }
 
   .vuecal__flex.vuecal__cells.day-view {
     .vuecal__cell--today {
-      background-color: rgba(255, 255, 255, 0.5);
+      background-color: rgba(255,255,255,0.5);
     }
     .vuecal__event.vuecal__event--focus {
       height: auto !important;
@@ -90,8 +90,9 @@
   }
 
   .vuecal__flex.vuecal__cells.week-view {
+
     .vuecal__cell--today {
-      background-color: rgba(255, 255, 255, 0.5);
+      background-color: rgba(255,255,255,0.5);
     }
 
     .vuecal__no-event {

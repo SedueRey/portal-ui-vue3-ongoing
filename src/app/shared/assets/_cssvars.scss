@@ -1,132 +1,134 @@
 [v-cloak] {
-  display: none;
-
-  > * {
     display: none;
-  }
+
+    >* {
+        display: none;
+    }
 }
 
 :root {
-  --border-color: rgba(0, 0, 0, 0.14);
-  --nav-button-color: #f2f5f7;
-  --card-bg-color: #ffffff;
-  --card-border-radius: 6px;
-  --carousel-height: 256px;
-  --carousel-item-small-width: 242px;
-  --carousel-item-width: 192px;
-  --carousel-small-height: 64px;
-  --category-text-color: rgba(255, 255, 255, 0.9);
-  // Light colors
-  --category0-color: #dee3e6;
-  --category0-color-medium: #dee3e6;
-  --category0-color-light: #dee3e6;
-  --category1-color: #bd2a33;
-  --category1-color-medium: #c0343d;
-  --category1-color-light: #cb585f;
-  --category2-color: #8284e0;
-  --category2-color-medium: #8e90f4;
-  --category2-color-light: #9b9cf9;
-  --category3-color: #479874;
-  --category3-color-medium: #479874;
-  --category3-color-light: #6cad90;
-  --category4-color: #5ea4d3;
-  --category4-color-medium: #67a9d5;
-  --category4-color-light: #7eb6db;
-  --category5-color: #ffba00;
-  --category5-color-medium: #ffbd0e;
-  --category5-color-light: #ffc834;
-  // Hover colors
-  --category0-color-dark: #c7ced2;
-  --category0-color-dark-medium: #d0d7da;
-  --category0-color-dark-light: #c7ced2;
-  --category1-color-dark: #aa252e;
-  --category1-color-dark-medium: #ae2e36;
-  --category1-color-dark-light: #bf5159;
-  --category2-color-dark: #787add;
-  --category2-color-dark-medium: #8688f3;
-  --category2-color-dark-light: #9092f9;
-  --category3-color-dark: #418c6a;
-  --category3-color-dark-medium: #529577;
-  --category3-color-dark-light: #629e83;
-  --category4-color-dark: #5697c2;
-  --category4-color-dark-medium: #5e9bc3;
-  --category4-color-dark-light: #74a7c9;
-  --category5-color-dark: #eaab01;
-  --category5-color-dark-medium: #eaad0c;
-  --category5-color-dark-light: #eab72e;
-  // End colors
-  --detail-grid-width: 850px;
-  --featured-bg-color: #a59a9a;
-  --focus-color: #56afff;
-  --font-family: 'Inter', sans-serif;
-  --font-size: 16px;
-  --grid-width: 1024px;
-  --header-font-family: 'Inter', sans-serif;
-  --header-size: 56px;
-  --icon-size: 24px;
-  --link-color: #0071eb;
-  --main-bg-color-dark: #f0f0f0;
-  --main-bg-color: #fff;
-  --main-border-color: rgba(0, 0, 0, 0.25);
-  --main-color-darker: #8e2026;
-  --main-color-hover: #{darken($mainColor, 10%)};
-  --main-color-text: rgba(255, 255, 255, 0.87);
-  --main-color-um: #{$mainColor};
-  --main-color: #bd2a33;
-  --main-inverse-color-text: rgba(255, 255, 255, 0.6);
-  --main-text-color: #555555;
-  --main-text-header: #333333;
-  --main-text-footer: #555555;
-  --menu-size: 32rem;
-  --private-menu-size: 15rem;
-  --message-alert: #fff4ce;
-  --message-color-alert: #8a6d3b;
-  --message-warning: #fff4ce;
-  --message-color-warning: #8a6d3b;
-  --message-error: #fde7e9;
-  --message-color-error: #a94442;
-  --message-info: #e5f1ff;
-  --message-color-info: #31708f;
-  --message-success: #dff6dd;
-  --message-color-success: #3c763d;
-  --mobile-menu-size: #{$screen-lg-min};
-  --placeholder-text: rgba(255, 255, 255, 0.7);
-  --starred-active-color: red;
-  --title-color: #555555;
-  --icon-text-color: #555555;
-  --title-inverse-color: rgba(255, 255, 255, 0.87);
-  --shadowLevel-0: 0 0 2px 0 rgba(85, 85, 85, 0.15);
-  --shadowLevel-1: 0 1px 8px 0 rgba(85, 85, 85, 0.15);
-  --shadowLevel-2: 0 1px 8px 0 rgba(0, 0, 0, 0.1), 0 3px 4px 0 rgba(0, 0, 0, 0.12),
-    0 3px 3px -2px rgba(0, 0, 0, 0.15);
-  --shadowLevel-3: 0 1px 8px 0 rgba(0, 0, 0, 0.12), 0 3px 4px 0 rgba(0, 0, 0, 0.14),
-    0 3px 3px -2px rgba(0, 0, 0, 0.2);
-  --shadowLevel-hover: 0 1px 8px 0 rgba(0, 0, 0, 0.12), 0 3px 4px 0 rgba(0, 0, 0, 0.14),
-    0 3px 3px -2px rgba(0, 0, 0, 0.2);
-  --dark-grey-300: #767676;
-  --highlight-color: #ffe0e2;
-  --menutitlecolor: #777777;
-  --privatebgcolor: #f2f5f7;
+    --border-color: rgba(0, 0, 0, 0.14);
+    --nav-button-color: #f2f5f7;
+    --card-bg-color: #ffffff;
+    --card-border-radius: 6px;
+    --carousel-height: 256px;
+    --carousel-item-small-width: 242px;
+    --carousel-item-width: 192px;
+    --carousel-small-height: 64px;
+    --category-text-color: rgba(255, 255, 255, 0.9);
+    // Light colors
+    --category0-color: #dee3e6;
+    --category0-color-medium: #dee3e6;
+    --category0-color-light: #dee3e6;
+    --category1-color: #bd2a33;
+    --category1-color-medium: #c0343d;
+    --category1-color-light: #cb585f;
+    --category2-color: #8284e0;
+    --category2-color-medium: #8e90f4;
+    --category2-color-light: #9b9cf9;
+    --category3-color: #479874;
+    --category3-color-medium: #479874;
+    --category3-color-light: #6cad90;
+    --category4-color: #5ea4d3;
+    --category4-color-medium: #67a9d5;
+    --category4-color-light: #7eb6db;
+    --category5-color: #ffba00;
+    --category5-color-medium: #ffbd0e;
+    --category5-color-light: #ffc834;
+    // Hover colors
+    --category0-color-dark: #c7ced2;
+    --category0-color-dark-medium: #d0d7da;
+    --category0-color-dark-light: #c7ced2;
+    --category1-color-dark: #aa252e;
+    --category1-color-dark-medium: #ae2e36;
+    --category1-color-dark-light: #bf5159;
+    --category2-color-dark: #787add;
+    --category2-color-dark-medium: #8688f3;
+    --category2-color-dark-light: #9092f9;
+    --category3-color-dark: #418c6a;
+    --category3-color-dark-medium: #529577;
+    --category3-color-dark-light: #629e83;
+    --category4-color-dark: #5697c2;
+    --category4-color-dark-medium: #5e9bc3;
+    --category4-color-dark-light: #74a7c9;
+    --category5-color-dark: #eaab01;
+    --category5-color-dark-medium: #eaad0c;
+    --category5-color-dark-light: #eab72e;
+    // End colors
+    --detail-grid-width: 850px;
+    --featured-bg-color: #a59a9a;
+    --focus-color: #56afff;
+    --font-family: 'Inter', sans-serif;
+    --font-size: 16px;
+    --grid-width: 1024px;
+    --header-font-family: 'Inter', sans-serif;
+    --header-size: 56px;
+    --icon-size: 24px;
+    --link-color: #0071eb;
+    --main-bg-color-dark: #F0F0F0;
+    --main-bg-color: #FFF;
+    --main-border-color: rgba(0, 0, 0, 0.25);
+    --main-color-darker: #8e2026;
+    --main-color-hover: #{darken($mainColor, 10%)};
+    --main-color-text: rgba(255, 255, 255, 0.87);
+    --main-color-um: #{$mainColor};
+    --main-color: #BD2A33;
+    --main-inverse-color-text: rgba(255, 255, 255, 0.6);
+    --main-text-color: #555555;
+    --main-text-header: #333333;
+    --main-text-footer: #555555;
+    --menu-size: 32rem;
+    --private-menu-size: 15rem;
+    --message-alert: #fff4ce;
+    --message-color-alert: #8a6d3b;
+    --message-warning: #fff4ce;
+    --message-color-warning: #8a6d3b;
+    --message-error: #fde7e9;
+    --message-color-error: #a94442;
+    --message-info: #e5f1ff;
+    --message-color-info: #31708f;
+    --message-success: #dff6dd;
+    --message-color-success: #3c763d;
+    --mobile-menu-size: #{$screen-lg-min};
+    --placeholder-text: rgba(255, 255, 255, 0.7);
+    --starred-active-color: red;
+    --title-color: #555555;
+    --icon-text-color: #555555;
+    --title-inverse-color: rgba(255, 255, 255, 0.87);
+    --shadowLevel-0: 0 0 2px 0 rgba(85, 85, 85, 0.15);
+    --shadowLevel-1: 0 1px 8px 0 rgba(85, 85, 85, 0.15);
+    --shadowLevel-2: 0 1px 8px 0 rgba(0, 0, 0, 0.1),
+        0 3px 4px 0 rgba(0, 0, 0, 0.12),
+        0 3px 3px -2px rgba(0, 0, 0, 0.15);
+    --shadowLevel-3: 0 1px 8px 0 rgba(0, 0, 0, 0.12),
+        0 3px 4px 0 rgba(0, 0, 0, 0.14),
+        0 3px 3px -2px rgba(0, 0, 0, 0.2);
+    --shadowLevel-hover: 0 1px 8px 0 rgba(0, 0, 0, 0.12),
+        0 3px 4px 0 rgba(0, 0, 0, 0.14),
+        0 3px 3px -2px rgba(0, 0, 0, 0.2);
+    --dark-grey-300: #767676;
+    --highlight-color: #ffe0e2;
+    --menutitlecolor: #777777;
+    --privatebgcolor: #f2f5f7;
 
-  @media (prefers-color-scheme: dark) {
-  }
+    @media (prefers-color-scheme: dark) {}
 }
 
 @media (max-width: $screen-sm-min) {
-  :root {
-    --header-size: 56px;
-    --carousel-height: 192px;
-    --carousel-item-width: 144px;
-    --carousel-small-height: 64px;
-    --carousel-item-small-width: 98%;
-    --font-size: 15px;
-    --title-color: #555555;
-    --menu-size: 82vw;
-  }
+    :root {
+        --header-size: 56px;
+        --carousel-height: 192px;
+        --carousel-item-width: 144px;
+        --carousel-small-height: 64px;
+        --carousel-item-small-width: 98%;
+        --font-size: 15px;
+        --title-color: #555555;
+        --menu-size: 82vw;
+    }
 }
 
 @media (min-width: 1600px) {
-  :root {
-    --grid-width: 1435px;
-  }
+    :root {
+        --grid-width: 1435px;
+    }
 }

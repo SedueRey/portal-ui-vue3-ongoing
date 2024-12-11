@@ -108,6 +108,7 @@
 </script>
 
 <style lang="scss">
+  @import '@/app/shared/assets/_vars.scss';
   @import '@/app/shared/assets/_cssvars.scss';
   @import '@/app/shared/assets/_common.scss';
 
