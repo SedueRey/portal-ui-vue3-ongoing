@@ -1,7 +1,7 @@
 import { type Ref, ref } from 'vue';
-import type { Notificacion } from '../shared.types';
 import { dateToInt } from '../utils/utils';
 import { defineStore } from 'pinia';
+import type { Notificacion } from '../shared.types';
 import sharedApi from '../api/shared.api';
 
 async function fnGetNotificationes(page, notificaciones = []): Promise<Notificacion[]> {

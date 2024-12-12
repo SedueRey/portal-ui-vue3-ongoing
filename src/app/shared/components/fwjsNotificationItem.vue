@@ -128,6 +128,7 @@
       font-size: 0.85rem;
       &.is-collapsed {
         -webkit-line-clamp: 2;
+        line-clamp: 2;
       }
     }
     &__menuTitle {

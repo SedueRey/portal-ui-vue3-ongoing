@@ -42,11 +42,11 @@
 </template>
 
 <script lang="ts" setup>
-  import { type Ref, onMounted, ref } from 'vue';
-  import type { WidgetService } from '../shared.types';
+  import { onMounted, ref, type Ref } from 'vue';
   import fwjsWidgetItem from './fwjsWidgetItem.vue';
   import { onClickOutside } from '@vueuse/core';
   import sharedApi from '../api/shared.api';
+  import type { WidgetService } from '../shared.types';
 
   const isOpened = ref(false);
   const services: Ref<WidgetService[]> = ref([]);

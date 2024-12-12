@@ -126,7 +126,9 @@
 </template>
 
 <script setup lang="ts">
-  import { type Ref, onBeforeUnmount, onMounted, ref } from 'vue';
+  import { onBeforeUnmount, onMounted, ref, type Ref } from 'vue';
+  import fwjsMessage from '@/app/shared/components/fwjsMessage.vue';
+  import fwjsSwitcher from '@/app/shared/components/fwjsSwitcher.vue';
   import { type NotiMovilNotificacionResponse } from '../api/user.contracts';
   import PreferencesPageNavigation from '../components/Preferences/PreferencesPageNavigation.vue';
   import Tab from 'primevue/tab';
@@ -135,8 +137,6 @@
   import TabPanels from 'primevue/tabpanels';
   import Tabs from 'primevue/tabs';
 
-  import fwjsMessage from '@/app/shared/components/fwjsMessage.vue';
-  import fwjsSwitcher from '@/app/shared/components/fwjsSwitcher.vue';
   import userApi from '../api/user.api';
 
   const config: Ref<NotiMovilNotificacionResponse[]> = ref([]);

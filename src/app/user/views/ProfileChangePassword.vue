@@ -24,8 +24,8 @@
 </template>
 
 <script setup lang="ts">
-  import ProfilePageNavigation from '../components/Profile/ProfilePageNavigation.vue';
   import { onMounted } from 'vue';
+  import ProfilePageNavigation from '../components/Profile/ProfilePageNavigation.vue';
   import { storeToRefs } from 'pinia';
   import { useI18n } from 'vue-i18n';
   import { usePageStore } from '@/app/shared/store/pages';

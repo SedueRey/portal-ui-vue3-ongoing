@@ -10,8 +10,8 @@
 </template>
 
 <script lang="ts">
-  import PrivatePageNavigation from '../Profile/PrivatePageNavigation.vue';
   import { defineComponent } from 'vue';
+  import PrivatePageNavigation from '../Profile/PrivatePageNavigation.vue';
 
   export default defineComponent({
     name: 'PreferencesPageNavigation',

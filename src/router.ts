@@ -1,9 +1,9 @@
 import {
+  createRouter,
+  createWebHashHistory,
   type NavigationGuardNext,
   type RouteLocationNormalizedGeneric,
   type RouteLocationNormalizedLoadedGeneric,
-  createRouter,
-  createWebHashHistory,
 } from 'vue-router';
 import DummyView from './app/DummyView.vue';
 import routes from './app/app.routes';

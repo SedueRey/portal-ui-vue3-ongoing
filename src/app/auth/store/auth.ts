@@ -1,5 +1,5 @@
+import { computed, ref, type Ref } from 'vue';
 import type { JWTLoginError, JWTStructure } from '../auth.types';
-import { type Ref, computed, ref } from 'vue';
 import authApi from '../api/auth.api';
 import authCrypto from '../utils/crypto';
 import { defineStore } from 'pinia';

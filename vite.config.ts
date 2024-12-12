@@ -1,11 +1,11 @@
-import { URL, fileURLToPath } from 'node:url';
 import { defineConfig, loadEnv } from 'vite';
-import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite';
+import { fileURLToPath, URL } from 'node:url';
 import basicSsl from '@vitejs/plugin-basic-ssl';
 import path from 'path';
 import { readFileSync } from 'fs';
 import vue from '@vitejs/plugin-vue';
 import vueDevTools from 'vite-plugin-vue-devtools';
+import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite';
 
 // https://vite.dev/config/
 export default (env: { mode: string }) => {

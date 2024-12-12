@@ -8,8 +8,8 @@
 </template>
 
 <script setup lang="ts">
-  import { type WidgetService } from '../shared.types';
   import { computed } from 'vue';
+  import { type WidgetService } from '../shared.types';
 
   const props = defineProps<{
     service: WidgetService;

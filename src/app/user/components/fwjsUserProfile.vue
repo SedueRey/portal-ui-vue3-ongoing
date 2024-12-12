@@ -1,8 +1,9 @@
 <template>
+  <pre>opened: {{ opened }}</pre>
   <aside class="fwjsUserProfile" v-if="loaded">
     <div
       v-if="isLogged"
-      @click="toggle()"
+      @click.prevent="toggle()"
       @keyup.enter="toggle()"
       @keyup.space="toggle()"
       tabindex="0"
@@ -70,15 +71,15 @@
 </template>
 
 <script setup lang="ts">
-  import { type Ref, computed, onMounted, ref, useTemplateRef } from 'vue';
+  import { computed, onMounted, ref, type Ref, useTemplateRef } from 'vue';
   import FwjsUserData from './fwjsUserData.vue';
   import LocaleChanger from './LocaleChanger.vue';
   import { onClickOutside } from '@vueuse/core';
   import { storeToRefs } from 'pinia';
   import { useAuthStore } from '@/app/auth/store/auth';
   import { useNotificationsStore } from '@/app/shared/store/notifications';
-  import { useUserStore } from '../store/user';
   import userApi from '../api/user.api';
+  import { useUserStore } from '../store/user';
 
   const props = defineProps({
     shouldRenderChildren: { type: Boolean, default: true },
@@ -114,6 +115,7 @@
   );
 
   const toggle = () => {
+    console.log('toggle');
     opened.value = !opened.value;
     if (profileMenu.value) {
       profileMenu.value.style.display = opened.value ? 'flex' : 'none';

@@ -1,8 +1,8 @@
-import { type Ref, computed, ref } from 'vue';
-import type { WhoamiUserDataResponse } from '../api/user.contracts';
+import { computed, ref, type Ref } from 'vue';
 import { defineStore } from 'pinia';
 import { useAuthStore } from '@/app/auth/store/auth';
 import userApi from '../api/user.api';
+import type { WhoamiUserDataResponse } from '../api/user.contracts';
 
 export const useUserStore = defineStore('user', () => {
   const user: Ref<WhoamiUserDataResponse | null> = ref(null);

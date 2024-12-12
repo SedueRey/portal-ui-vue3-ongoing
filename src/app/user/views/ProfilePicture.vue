@@ -112,17 +112,17 @@
 </template>
 
 <script setup lang="ts">
-  import { type Ref, computed, onBeforeUnmount, onMounted, ref } from 'vue';
+  import { computed, onBeforeUnmount, onMounted, ref, type Ref } from 'vue';
   import FileUpload from 'primevue/fileupload';
   import ProfilePageNavigation from '../components/Profile/ProfilePageNavigation.vue';
+  import { storeToRefs } from 'pinia';
   import Toast from 'primevue/toast';
   import ToggleSwitch from 'primevue/toggleswitch';
-  import { storeToRefs } from 'pinia';
   import { useAuthStore } from '@/app/auth/store/auth';
   import { useI18n } from 'vue-i18n';
   import { usePageStore } from '@/app/shared/store/pages';
-  import { useToast } from 'primevue/usetoast';
   import userApi from '../api/user.api';
+  import { useToast } from 'primevue/usetoast';
 
   const { t } = useI18n();
   const toast = useToast();

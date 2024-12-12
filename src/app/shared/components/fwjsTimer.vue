@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { type Ref, computed, onMounted, ref, watch } from 'vue';
+  import { computed, onMounted, ref, type Ref, watch } from 'vue';
 
   const FULL_DASH_ARRAY = 283;
 

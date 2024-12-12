@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-  import { type Ref, computed, onBeforeUnmount, onMounted, ref } from 'vue';
+  import { computed, onBeforeUnmount, onMounted, ref, type Ref } from 'vue';
   import { nowUTC, timeDiffCalc } from '@/app/shared/utils/utils';
   import Message from 'primevue/message';
   // import { useStore } from 'vuex';

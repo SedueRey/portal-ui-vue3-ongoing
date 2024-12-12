@@ -2,12 +2,16 @@ import pluginVue from 'eslint-plugin-vue';
 import vueTsEslintConfig from '@vue/eslint-config-typescript';
 import pluginVitest from '@vitest/eslint-plugin';
 import pluginCypress from 'eslint-plugin-cypress/flat';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import skipFormatting from '@vue/eslint-config-prettier/skip-formatting';
 
 export default [
   {
     name: 'app/files-to-lint',
     files: ['**/*.{ts,mts,tsx,vue}'],
+    plugins: {
+      'simple-import-sort': simpleImportSort,
+    },
     rules: {
       '@typescript-eslint/no-unused-vars': [
         'error',
@@ -21,7 +25,7 @@ export default [
       'sort-imports': [
         'error',
         {
-          ignoreCase: false,
+          ignoreCase: true,
           ignoreDeclarationSort: false,
           ignoreMemberSort: false,
           memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
@@ -29,6 +33,9 @@ export default [
         },
       ],
       '@typescript-eslint/no-explicit-any': 'off',
+      'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
+      'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
+      'no-alert': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
     },
   },
   {

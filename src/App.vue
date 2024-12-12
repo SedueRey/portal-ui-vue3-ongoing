@@ -55,15 +55,15 @@
 </template>
 
 <script setup lang="ts">
-  import { type Ref, onBeforeMount, ref } from 'vue';
+  import { onBeforeMount, ref, type Ref } from 'vue';
   import AdminLinks from './app/auth/components/AdminLinks.vue';
   import { Button } from 'primevue';
-  import { RouterView } from 'vue-router';
   import fwjsHeader from './app/shared/components/fwjsHeader.vue';
   import fwjsMessage from './app/shared/components/fwjsMessage.vue';
   import fwjsNotifications from './app/shared/components/fwjsNotifications.vue';
   import fwjsUserProfile from './app/user/components/fwjsUserProfile.vue';
   import { jwtDecode } from 'jwt-decode';
+  import { RouterView } from 'vue-router';
   import { storeToRefs } from 'pinia';
   import { useAuthStore } from './app/auth/store/auth';
 

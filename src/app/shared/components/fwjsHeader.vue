@@ -37,7 +37,7 @@
 </template>
 
 <script setup lang="ts">
-  import { type Ref, computed, ref } from 'vue';
+  import { computed, ref, type Ref } from 'vue';
   import fwjsWidget from './fwjsWidget.vue';
   import { storeToRefs } from 'pinia';
   import { useAuthStore } from '@/app/auth/store/auth';
