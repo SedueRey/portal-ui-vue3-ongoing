@@ -16,7 +16,9 @@ export default (env: { mode: string }) => {
   }
   let key = undefined;
   let cert = undefined;
-  if (mode === 'development') {
+  console.log('mode', mode);
+  const isDevelopment = mode.indexOf('development') !== -1;
+  if (isDevelopment) {
     try {
       key = readFileSync('.certs/key.pem') || false;
       cert = readFileSync('.certs/cert.pem') || false;
@@ -28,19 +30,16 @@ export default (env: { mode: string }) => {
   const host = process?.env?.VITE_APP_LOCAL_URL || '0.0.0.0';
   return defineConfig({
     base: './',
-    plugins:
-      mode === 'development'
-        ? [
-            vue(),
-            basicSsl(),
-            VueI18nPlugin({
-              /* options */
-              // locale messages resource pre-compile option
-              include: [path.resolve(__dirname, './src/locales/**')],
-            }),
-            vueDevTools(),
-          ]
-        : [vue(), basicSsl()],
+    plugins: [
+      vue(),
+      basicSsl(),
+      vueDevTools(),
+      VueI18nPlugin({
+        /* options */
+        // locale messages resource pre-compile option
+        include: [path.resolve(__dirname, './src/locales/**')],
+      }),
+    ],
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
