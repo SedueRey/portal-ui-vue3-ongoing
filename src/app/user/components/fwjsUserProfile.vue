@@ -39,6 +39,7 @@
         </div>
       </nav>
       <router-link
+        @click="hide()"
         to="/profile/data"
         class="fwjsUserProfile__menuitem fwjsUserProfile__menuProfile"
         :class="classMenu"
