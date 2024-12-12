@@ -1,5 +1,4 @@
 <template>
-  <pre>opened: {{ opened }}</pre>
   <aside class="fwjsUserProfile" v-if="loaded">
     <div
       v-if="isLogged"
@@ -115,8 +114,7 @@
   );
 
   const toggle = () => {
-    console.log('toggle');
-    opened.value = !opened.value;
+    opened.value = true;
     if (profileMenu.value) {
       profileMenu.value.style.display = opened.value ? 'flex' : 'none';
     }

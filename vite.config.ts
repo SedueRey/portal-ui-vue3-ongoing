@@ -16,7 +16,6 @@ export default (env: { mode: string }) => {
   }
   let key = undefined;
   let cert = undefined;
-  console.log('mode', mode);
   const isDevelopment = mode.indexOf('development') !== -1;
   if (isDevelopment) {
     try {
