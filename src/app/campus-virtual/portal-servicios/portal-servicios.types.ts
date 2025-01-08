@@ -46,3 +46,81 @@ export interface SlidersDefinition {
   ALL_SERVICES: Slider;
   UMRECOMMENDED?: Slider;
 }
+
+export interface ApiumCategory {
+  id: number;
+  name: string;
+  color: string;
+}
+
+export interface CardItemAudience {
+  identifier: string;
+  audienceType: string;
+}
+
+export interface CardItemAreaServed {
+  identifier: string;
+  name: string;
+}
+
+export interface CardItemCategory {
+  description: string;
+  disambiguatingDescription: string;
+  color: string | null;
+  logo: string;
+  identifier: string;
+  name: string;
+}
+
+export interface Link {
+  href: string;
+}
+
+export interface LinkObject {
+  external: Link;
+  self: Link;
+}
+
+export interface CardChildren {
+  identufier: string;
+  name: string;
+}
+
+export interface CardItem {
+  identifier: string;
+  brand: string;
+  name: string;
+  description: string | null;
+  disambiguatingDescription: string;
+  logo: string;
+  dateModified: string;
+  audience: CardItemAudience[];
+  areaServed: CardItemAreaServed[];
+  category: CardItemCategory[];
+  alternateName: string[];
+  isRelatedTo: string;
+  potentialAction: string;
+  termsOfService: string;
+  children: CardChildren[] | null;
+  searchId: number;
+  adapted: string;
+  visible: string;
+  sonsOfSuperCards: string[];
+  novelty?: string;
+  updated?: number;
+  _link: LinkObject;
+}
+
+export interface SliderOptions {
+  i18n: string;
+  key: string;
+  value: string;
+  disabled: boolean;
+}
+
+export interface SliderConfig {
+  sliderKey: string;
+  sliderAction: string;
+  sliderParam: string;
+  options: SliderOptions[];
+}

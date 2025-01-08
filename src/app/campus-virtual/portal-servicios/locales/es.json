@@ -1,0 +1,78 @@
+{
+  "highlight": "Destacar",
+  "remove": "Eliminar",
+  "favourites": "de favoritos",
+  "noitems": "No hay servicios para estas condiciones",
+  "showless": "Ver menos",
+  "showless_acc": "Ver menos elementos",
+  "elements": "Mostrando {0} de {1} elementos",
+  "pages": "Página {0} de {1}",
+  "ALL_SERVICES": {
+    "title": "Todo lo que puedes encontrar"
+  },
+  "STARRED_SERVICES": {
+    "title": "Mis atajos"
+  },
+  "RECENT_SERVICES": {
+    "title": "Recientemente visitados"
+  },
+  "MOST_USED_SERVICES": {
+    "title": "Más visitados"
+  },
+  "RECOMMENDED": {
+    "title": "Te puede interesar..."
+  },
+  "OTHERS": {
+    "title": "Para tu perfil"
+  },
+  "PAS": {
+    "title": "Si eres Personal de Administración y Servicios"
+  },
+  "PDI": {
+    "title": "Servicios que te ayudarán en tu docencia"
+  },
+  "STUDENT": {
+    "title": "Para ti, que eres estudiante"
+  },
+  "UMRECOMMENDED": {
+    "title": "La UMU te recomienda"
+  },
+  "TAG_UTILIDADES": {
+    "title": "Etiqueta: Utilidades"
+  },
+  "TAG_ITINERARIOS_IMPRIMIR": {
+    "title": "Etiquetas: Imprimir e Itinerarios"
+  },
+  "NEW_SERVICES": {
+    "title": "Novedades"
+  },
+  "Sliders": "Carriles",
+  "Admin": "Admin",
+  "becomeUser": "Suplantar usuarios",
+  "getBack": "Volver a",
+  "method": "Modo de ordenación",
+  "alpha": "Por orden alfabético",
+  "ident": "Identificador",
+  "most": "Primero los más visitados",
+  "ema": "Primero los recomendados para mi",
+  "orderSelect": "Selecciona orden",
+  "resultTitle": "Resultados en mi campus",
+  "resultTitleAlt": "Búsquedas relacionadas",
+  "searching": "Buscando...",
+  "emptyResult1": "La búsqueda de",
+  "emptyResult2": "no arrojó resultados",
+  "foundResult1": "Se encontraron",
+  "foundResult2": "coincidencias",
+  "searchingFor": "buscando",
+  "searchingForTitle": "Buscando",
+  "searchingUM1": "También puedes buscar",
+  "searchingUM2": "en el resto de la Universidad desde",
+  "searchingUMLink": "este enlace",
+  "showmore": "Expandir",
+  "hide": "Ocultar este carril",
+  "filter": "Filtrar",
+  "order": "Ordenar",
+  "showall": "Mostrar todos",
+  "detail": "Más información sobre ",
+  "new": "Novedad"
+}

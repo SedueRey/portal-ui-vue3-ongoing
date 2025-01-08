@@ -1,0 +1,78 @@
+{
+  "highlight": "Highlight",
+  "remove": "Remove",
+  "favourites": "from shortcuts",
+  "noitems": "No items found",
+  "showless_acc": "Show less elements",
+  "elements": "Showing {0} out of {1} elements",
+  "pages": "Page {0} out of {1}",
+  "ALL_SERVICES": {
+    "title": "All our services"
+  },
+  "STARRED_SERVICES": {
+    "title": "Favourites"
+  },
+  "RECENT_SERVICES": {
+    "title": "Last visited"
+  },
+  "MOST_USED_SERVICES": {
+    "title": "Most visited"
+  },
+  "RECOMMENDED": {
+    "title": "You might be interested in"
+  },
+  "OTHERS": {
+    "title": "For your role"
+  },
+  "PAS": {
+    "title": "If you are Administration and Services Staff"
+  },
+  "PDI": {
+    "title": "Services that will help you in your teaching"
+  },
+  "STUDIENT": {
+    "title": "For you, who are a student"
+  },
+  "UMRECOMMENDED": {
+    "title": "Would you like to take a look?"
+  },
+  "TAG_UTILIDADES": {
+    "title": "Tag: Utilidades"
+  },
+  "TAG_UTILIDADES_ACTAS": {
+    "title": "Tags: Imprimir e Itinerarios"
+  },
+  "NEW_SERVICES": {
+    "title": "New services"
+  },
+  "Sliders": "Sliders",
+  "Admin": "Root",
+  "becomeUser": "Become user",
+  "getBack": "Get back to",
+  "method": "Sorting method",
+  "alpha": "Alphabetical",
+  "ident": "Identifier",
+  "most": "Most visited",
+  "ema": "Exponential Moving Average",
+  "orderSelect": "Sorting order",
+  "resultTitle": "Search results on my campus",
+  "resultTitleAlt": "Related searches",
+  "searching": "Searching...",
+  "emptyResult1": "The search for",
+  "emptyResult2": "yielded no results",
+  "foundResult1": "The search provided",
+  "foundResult2": "matches",
+  "searchingFor": "searching for",
+  "searchingForTitle": "Searching for",
+  "searchingUM1": "You can also search for",
+  "searchingUM2": "in all University",
+  "searchingUMLink": "this link",
+  "showmore": "Expand",
+  "showless": "Contract",
+  "hide": "Hide this slider",
+  "filter": "Filter",
+  "order": "Order",
+  "showall": "Show all",
+  "detail": "Show details about ",
+  "new": "Now available"
+}
