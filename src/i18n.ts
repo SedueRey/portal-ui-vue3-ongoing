@@ -36,6 +36,8 @@ export async function loadLocaleMessages(i18n, locale) {
     const messages = await import(`./app/${module}/locales/${locale}.json`);
     allMessages = { ...allMessages, ...messages.default };
   }
+  const messageChild = await import(`./app/campus-virtual/historico-guias/locales/${locale}.json`);
+  allMessages = { ...allMessages, ...messageChild.default };
   i18n.global.setLocaleMessage(locale, allMessages);
   return nextTick();
 }

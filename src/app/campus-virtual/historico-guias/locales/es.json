@@ -1,0 +1,9 @@
+{
+  "ggddappname": "Histórico de guías docentes",
+  "labeltitle": "Nombre de asignatura",
+  "noresults": "No se encontraron resultados",
+  "placeholder": "Introduzca el nombre o código de la asignatura",
+  "searchbutton": "Buscar guía docente",
+  "results": "Se han encontrado {number} resultados",
+  "years": "Cursos académicos"
+}

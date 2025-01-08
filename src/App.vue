@@ -11,8 +11,6 @@
         <admin-links v-if="isAdmin" />
       </fwjsUserProfile>
     </fwjs-header>
-    <Button @click="login" label="Miau" />
-    <div>{{ $t('safariButton') }}</div>
     <div v-if="!isLogged" class="app__loading">
       <div v-if="isSafari()">
         <h1>{{ $t('safariTitle') }}</h1>
@@ -57,7 +55,6 @@
 <script setup lang="ts">
   import { onBeforeMount, ref, type Ref } from 'vue';
   import AdminLinks from './app/auth/components/AdminLinks.vue';
-  import { Button } from 'primevue';
   import fwjsHeader from './app/shared/components/fwjsHeader.vue';
   import fwjsMessage from './app/shared/components/fwjsMessage.vue';
   import fwjsNotifications from './app/shared/components/fwjsNotifications.vue';
@@ -66,6 +63,7 @@
   import { RouterView } from 'vue-router';
   import { storeToRefs } from 'pinia';
   import { useAuthStore } from './app/auth/store/auth';
+  import { usePageStore } from './app/shared/store/pages';
 
   const { isLogged, tokenData, isAdmin, loginError } = storeToRefs(useAuthStore());
   const apptoken: Ref<string | null | undefined> = ref(null);
@@ -89,6 +87,7 @@
   };
 
   onBeforeMount(async () => {
+    usePageStore().setTitle('');
     apptoken.value = sessionStorage.getItem('accesstoken');
     if (apptoken.value) {
       const tokenData = jwtDecode(apptoken.value);

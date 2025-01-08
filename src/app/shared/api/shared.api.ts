@@ -38,9 +38,12 @@ const sharedApi = {
   },
   notifications: (estado, page, size) => {
     const fechaDesde = new Date();
-    const fechaTexto = `${fechaDesde.getUTCDate()}/${fechaDesde.getUTCMonth()}/${
-      fechaDesde.getUTCFullYear() - 1
-    }`;
+    const fechaTexto =
+      fechaDesde.getUTCMonth() > 1
+        ? `${fechaDesde.getUTCDate()}/${fechaDesde.getUTCMonth() - 1}/${
+            fechaDesde.getUTCFullYear() - 1
+          }`
+        : `${fechaDesde.getUTCDate()}/12/${fechaDesde.getUTCFullYear() - 2}`;
     const url = `${endpoints.notifications}?estados=${estado}&fecha_desde=${
       fechaTexto
     }%2000:00:00&page=${page}&size=${size}`;
