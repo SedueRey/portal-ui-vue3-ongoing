@@ -4,7 +4,7 @@
       <article class="hero__search">
         <h1 class="hero__title">{{ $t('welcome') }}</h1>
         <p class="hero__text">{{ $t('welcomeDesc') }}</p>
-        <div rel="header-search" :has-bg="false" class="hero__inputSearch" />
+        <header-search :has-bg="false" class="hero__inputSearch" />
         <a href="https://www.um.es/web/atica/micampus" target="_blank" class="hero__helpText">
           {{ $t('link') }}
         </a>
@@ -15,7 +15,7 @@
 
 <script lang="ts">
   import { defineComponent } from 'vue';
-  // import HeaderSearch from './HeaderSearch.vue';
+  import HeaderSearch from './HeaderSearch.vue';
 
   export default defineComponent({
     name: 'HeroHome',
@@ -26,10 +26,7 @@
       };
     },
     components: {
-      // HeaderSearch,
-    },
-    computed: {
-      // ...mapGetters('auth', ['isLogged']),
+      HeaderSearch,
     },
   });
 </script>
