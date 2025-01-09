@@ -6,6 +6,7 @@ export interface SearchServiceItems {
 export interface AreaServiceItems {
   identifier: string;
   order: number;
+  category?: CardItemCategory[];
 }
 
 export interface PossibleOrders {

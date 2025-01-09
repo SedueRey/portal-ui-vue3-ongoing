@@ -15,7 +15,7 @@
       @carouselView="carouselView"
       :service-list="filteredServices"
       :tidy="tidy"
-      :small-cards="smallCards || null"
+      :small-cards="smallCards"
       :options="options"
       @pageActiveChange="getPage"
       @carouselFilter="filterCategory"
@@ -30,10 +30,10 @@
 </template>
 
 <script lang="ts" setup>
-  import type { CardItem, SliderConfig } from '../portal-servicios.types';
+  import type { AreaServiceItems, SliderConfig } from '../portal-servicios.types';
   import { computed, ref } from 'vue';
   import CardGroupCarousel from './CardGroupCarousel.vue';
-  // import CardGroupOpened from './CardGroupOpened.vue';
+  import CardGroupOpened from './CardGroupOpened.vue';
   import fwjsMessage from '@/app/shared/components/fwjsMessage.vue';
   import { useAuthStore } from '@/app/auth/store/auth';
   import { useI18n } from 'vue-i18n';
@@ -46,7 +46,7 @@
       tidy: boolean;
       options: SliderConfig;
       smallCards?: boolean;
-      services: CardItem[];
+      services: AreaServiceItems[];
     }>(),
     {
       smallCards: false,
@@ -71,7 +71,7 @@
     return filteredCategory.value === ''
       ? props.services
       : props.services.filter(
-          (e) => (e.category[0] ? e.category[0].identifier : '') === filterApply,
+          (e) => (e.category && e.category[0] ? e.category[0].identifier : '') === filterApply,
         );
   });
 

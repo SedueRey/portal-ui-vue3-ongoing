@@ -1,6 +1,5 @@
 import type { MinimalSlider, SearchServiceItems, Slider } from '../portal-servicios.types';
 import type {
-  PortalServiciosBasicServiceResponse,
   PortalServiciosServiceResponse,
   PortalServiciosSliderInfoResponse,
 } from '../api/portal-servicios.contracts';
@@ -32,7 +31,7 @@ const newArea: Slider = {
 
 export const useServicesStore = defineStore('services', () => {
   // State
-  const cards: Ref<PortalServiciosBasicServiceResponse[]> = ref([]);
+  const cards: Ref<PortalServiciosServiceResponse[]> = ref([]);
   const indice: Ref<number> = ref(0);
   const loadingSliders: Ref<boolean> = ref(true);
   const areas = ref(structuredClone(slidersDefinition));
@@ -66,24 +65,20 @@ export const useServicesStore = defineStore('services', () => {
       areas.value[slider.sliderKey] = { ...areas.value[slider.sliderKey], ...slider, loaded: true };
     }
   };
-  const _setCardMutation = (card: PortalServiciosBasicServiceResponse) => {
+  const _setCardMutation = (card: PortalServiciosServiceResponse) => {
     if (cards.value.filter((el) => el.identifier === card.identifier).length === 0) {
       if (card.scion === false) {
         cards.value.push(card);
       }
     }
   };
-  const _setCardDetailMutation = (card: PortalServiciosBasicServiceResponse) => {
+  const _setCardDetailMutation = (card: PortalServiciosServiceResponse) => {
     if (cards.value.filter((el) => el.identifier === card.identifier).length === 0) {
       cards.value.push(card);
     } else {
       const itemIndex = cards.value.findIndex((el) => el.identifier === card.identifier);
       const timeStamp = Date.now();
       cards.value[itemIndex] = { ...card, updated: timeStamp, complete: true };
-      // Las dos siguientes líneas son necesarias para que Pinia se entere de que se ha modificado
-      // el array y se haga propagación de datos. Se supone que en Vue 3 esto estará mejor.
-      cards.value.push();
-      cards.value.splice(-1, 1);
     }
   };
   const _toggleStarredMutation = (serviceUuid: string) => {
@@ -185,8 +180,8 @@ export const useServicesStore = defineStore('services', () => {
         });
     }
   };
-  const loadCard = (uuid: string) => {
-    servicesApi
+  const loadCard = async (uuid: string) => {
+    await servicesApi
       .detailCard(uuid)
       .then((r) => r.data)
       .then((card) => {
@@ -342,7 +337,7 @@ export const useServicesStore = defineStore('services', () => {
             setSliderMutation(slider);
           }
         });
-        loadingSliders.value = true;
+        loadingSliders.value = false;
       });
   };
   const loadSingle = (uuid) => {

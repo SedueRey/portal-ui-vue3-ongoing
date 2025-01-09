@@ -74,5 +74,21 @@
   "order": "Order",
   "showall": "Show all",
   "detail": "Show details about ",
-  "new": "Now available"
+  "new": "Now available",
+  "loading": "Loading data...",
+  "completeListTitle": "Services full list",
+  "noVisibleSliderMsg": "Visibility of all sliders has been disabled ",
+  "noVisibleSliderMsg2": "or there is no service as a favorite. To modify this home screen",
+  "noVisibleSliderMsg3": " it to your liking, you can",
+  "noVisibleSliderBtn": "access the settings of your preferences",
+  "welcome": "Welcome to My campus UMU",
+  "link": "What should you know about My Campus?",
+  "welcomeDesc": "Information, services and procedures of the University of Murcia online.",
+  "tidy": "Arrange",
+  "tidy_acc": "Arrange",
+  "showmore_acc": "Show all elements",
+  "next": "Next",
+  "next_acc": "Next page",
+  "prev": "Prev",
+  "prev_acc": "Previous page"
 }

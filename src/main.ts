@@ -2,6 +2,7 @@ import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 import '@vue-a11y/skip-to/dist/style.css';
 
+import Vue3TouchEvents, { type Vue3TouchEventsOptions } from 'vue3-touch-events';
 import App from './App.vue';
 import BadgeDirective from 'primevue/badgedirective';
 import ConfirmationService from 'primevue/confirmationservice';
@@ -34,6 +35,9 @@ app.use(PrimeVue, {
 
 app.use(ConfirmationService);
 app.use(ToastService);
+app.use<Vue3TouchEventsOptions>(Vue3TouchEvents, {
+  disableClick: false,
+});
 app.directive('tooltip', Tooltip);
 app.directive('badge', BadgeDirective);
 app.directive('ripple', Ripple);

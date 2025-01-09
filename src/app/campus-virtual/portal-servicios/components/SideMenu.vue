@@ -23,7 +23,7 @@
     </span>
     <div class="sideMenu__option">
       <span class="sideMenu__toggler" @click="toggleCollapsable" />
-      <ul v-click-outside="hide" class="sideMenu__menu" v-if="!collapsed">
+      <ul ref="target" class="sideMenu__menu" v-if="!collapsed">
         <li class="sideMenu__menuItem" @click="toggleVisibility()">
           <i class="far fa-eye" /> {{ $t('hide') }}
         </li>
@@ -71,6 +71,7 @@
 <script setup lang="ts">
   import { onMounted, ref } from 'vue';
   import categories from '../models/categories';
+  import { onClickOutside } from '@vueuse/core';
   import type { SliderConfig } from '../portal-servicios.types';
   import { storeToRefs } from 'pinia';
   import { useMobile } from '@/app/shared/composables/useMobile';
@@ -134,11 +135,12 @@
     emit('carouselFilter', value);
   };
 
-  const hide = (event) => {
-    if (!event.target.classList.contains('sideMenu__toggler')) {
+  const target = ref(null);
+  onClickOutside(target, (event) => {
+    if (!!event) {
       collapsed.value = true;
     }
-  };
+  });
 
   const toggleVisibility = () => useServicesStore().toggleVisibility(sliderKey.value);
 
@@ -166,8 +168,6 @@
     filter(savedFiltered);
   });
 </script>
-
-<i18n src="../locales/i18nSliders.json"></i18n>
 
 <style lang="scss">
   .sideMenu {

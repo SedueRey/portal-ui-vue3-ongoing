@@ -17,6 +17,7 @@ export interface PortalServiciosBasicService {
   sonsOfSuperCards: string[];
   updated?: number;
   complete?: boolean;
+  novelty?: string;
 }
 
 // Servicio /allservicesbyuser/

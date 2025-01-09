@@ -5,21 +5,14 @@ import {
   type RouteLocationNormalizedGeneric,
   type RouteLocationNormalizedLoadedGeneric,
 } from 'vue-router';
-import DummyView from './app/DummyView.vue';
+// import DummyView from './app/DummyView.vue';
 import routes from './app/app.routes';
 import { useAuthStore } from './app/auth/store/auth';
 import { usePageStore } from './app/shared/store/pages';
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
-      name: 'dummy',
-      component: DummyView,
-    },
-    ...routes,
-  ],
+  routes: [...routes],
 });
 
 router.afterEach((to) => {

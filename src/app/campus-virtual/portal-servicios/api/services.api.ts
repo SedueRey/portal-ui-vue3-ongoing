@@ -59,15 +59,16 @@ const servicesApi = {
   getSliders: () => apiRequest({ url: endpoints.lazy.getSliders }),
   lazySlider: (params) => {
     const { service, isLogged, howMany, tag } = params;
-    const useruuid = localStorage.getItem('p15s-useruuid') || '';
-    let { param } = service;
+    // const useruuid = localStorage.getItem('p15s-useruuid') || '';
+    const { param } = service;
+    /*
     if (useruuid !== '') {
-      const useruuidLS = localStorage.getItem(useruuid) || '';
-      const paramFromStorage = JSON.parse(useruuidLS);
-      if (paramFromStorage !== null && service.type === paramFromStorage.key) {
+      const paramFromStorage = localStorage.getItem(useruuid) || '';
+      if (paramFromStorage.trim() !== '' && service.type === paramFromStorage.key) {
         param = paramFromStorage.param;
       }
     }
+    */
     const tagsUtil = tag !== '' ? `?tag=${tag.split(',').join('&tag=')}` : '';
     const url =
       isLogged && service.type in endpoints.lazy.sliderAlternative

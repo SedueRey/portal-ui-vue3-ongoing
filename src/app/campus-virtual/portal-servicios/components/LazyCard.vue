@@ -5,9 +5,10 @@
     itemscope
     itemtype="http://schema.org/Service"
     v-if="service"
+    ref="cardtag"
   >
     <a
-      v-if="lazyService.name"
+      v-if="isLoadedLazyService"
       :href="url"
       :target="placeToOpenLink"
       @click="beacon"
@@ -33,7 +34,7 @@
             <icon-service class="card__icon" v-if="lazyService.logo" :logo="lazyService.logo" />
           </span>
         </span>
-        <header class="card__header">
+        <header class="card__header" v-if="isLoadedLazyService">
           <h1 :title="lazyService.name" class="card__namecontainer" itemprop="name">
             <span class="card__name">
               {{ lazyService.name }}
@@ -44,14 +45,14 @@
     </a>
     <aside class="card__buttons">
       <button-starred
-        v-if="lazyService.name && showFavourite"
+        v-if="isLoadedLazyService && showFavourite"
         class="card__buttonStarred"
         :service-id="service.identifier"
         :service-name="lazyService.name"
         tabindex="0"
       />
       <router-link
-        v-if="!small && lazyService.name && showInfo"
+        v-if="!small && isLoadedLazyService && showInfo"
         class="card__link card__linkInfo"
         itemprop="url"
         :to="{ name: 'detail', params: { identifier: lazyService.identifier } }"
@@ -64,7 +65,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue';
+  import { computed, nextTick, onMounted, type Ref, ref } from 'vue';
   import ButtonStarred from './ButtonStarred.vue';
   import type { CardItem } from '../portal-servicios.types';
   import IconService from './IconService.vue';
@@ -85,24 +86,26 @@
     shouldLoad: { type: Boolean, default: true },
   });
 
+  let observer: IntersectionObserver | null = null;
   const { t } = useI18n();
-  const observer = ref<IntersectionObserver | null>(null);
   const beacon = useBeacon().beacon;
-  // const { areas } = storeToRefs(useServicesStore());
+  const { cards } = storeToRefs(useServicesStore());
   const { notifications } = storeToRefs(useNotificationsStore());
   const { isNewUser } = storeToRefs(useUserStore());
 
-  // const cards: Ref<CardItem[]> = computed(() => [] /* areas.value.cards */);
-
-  const lazyService = computed(() => {
-    // const itemService = cards.value.find((el) => el.identifier === props.service.identifier);
-    return /* itemService || */ props.service;
-  });
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const lazyService = ref<any | null>(null);
+  const isLoadedLazyService: Ref<boolean> = computed(
+    () => lazyService.value !== null && !!lazyService.value?.name,
+  );
 
   const isNew = computed(() => lazyService.value?.novelty === '1' || false);
   const isNewCardClass = computed(() => (isNew.value ? ' is_new' : ''));
   const getClass = computed(() => {
     let cardCategory = '';
+    if (!lazyService.value) {
+      return cardCategory;
+    }
     try {
       cardCategory = `card__category_${lazyService.value.category[0].identifier}`;
     } catch (_e) {
@@ -113,46 +116,39 @@
     );
   });
   const inicialesClass = computed(() => {
+    if (!lazyService.value) {
+      return '';
+    }
     try {
-      return `card__iniciales__category_${lazyService.value.category[0].identifier}`;
+      return `card__iniciales__category_${lazyService.value?.category[0]?.identifier}`;
     } catch (_e) {
       return 'card__iniciales__category_0';
     }
   });
-  const isOldData = computed(() => {
-    const fourteenDays = 12096e5;
-    const tooOld = Date.now() - fourteenDays;
-    if (
-      !lazyService.value.updated ||
-      !lazyService.value.dateModified ||
-      lazyService.value.updated < tooOld
-    ) {
-      return true;
-    }
-    return lazyService.value.updated - lazyService.value.dateModified < 0;
-  });
-  // const hasChildren = computed(() => lazyService.value.sonsOfSuperCards.length > 0);
+
   const url = computed(() => useServiceComposable().externalUrl.value);
   const unread = computed(() => {
-    return notifications.value.length > 0
-      ? notifications.value.filter(
-          (el) =>
-            el.estado === 'NL' &&
-            (`${el.codigo_aplicacion}` === lazyService.value.identifier ||
-              el.aplicacion
-                .normalize('NFD')
-                .replace(/\p{Diacritic}/gu, '')
-                .replace(/ /g, '-')
-                .toLowerCase() ===
-                lazyService.value.name
+    return lazyService.value
+      ? notifications.value.length > 0
+        ? notifications.value.filter(
+            (el) =>
+              el.estado === 'NL' &&
+              (`${el.codigo_aplicacion}` === lazyService.value.identifier ||
+                el.aplicacion
                   .normalize('NFD')
                   .replace(/\p{Diacritic}/gu, '')
                   .replace(/ /g, '-')
-                  .toLowerCase()),
-        ).length
+                  .toLowerCase() ===
+                  lazyService.value.name
+                    .normalize('NFD')
+                    .replace(/\p{Diacritic}/gu, '')
+                    .replace(/ /g, '-')
+                    .toLowerCase()),
+          ).length
+        : 0
       : 0;
   });
-  const fillTitleInfo = computed(() => `${t('detail')} ${lazyService.value.name}`);
+  const fillTitleInfo = computed(() => `${t('detail')} ${lazyService.value?.name || ''}`);
   const placeToOpenLink = computed(() => {
     const isInternal = useServiceComposable().externalUrl.value.startsWith('/#/');
     return isInternal || (lazyService.value.adapted && lazyService.value.adapted === '1')
@@ -160,57 +156,31 @@
       : '_blank';
   });
 
-  const loadCompleteCard = (intersectionObserverEntry) => {
-    if ('IntersectionObserver' in window && !!intersectionObserverEntry) {
-      const { isIntersecting, isVisible } = intersectionObserverEntry[0];
-      if (props.shouldLoad) {
-        if (useServiceComposable().isEmptyCard && (isVisible || isIntersecting)) {
-          if (observer.value) {
-            observer.value.disconnect();
-          }
-          useServicesStore().loadCard(props.service.identifier);
-          nextTick(() => {
-            document.querySelector('.card')?.classList.remove('card__is_empty');
-          });
-        }
-        if (!useServiceComposable().isEmptyCard) {
-          if (isOldData.value) {
-            useServicesStore().loadCard(props.service.identifier);
-          }
-        }
-      }
-    } else {
-      useServicesStore().loadCard(props.service.identifier);
+  const cardtag = ref(null);
+  const startObserving = async (target = cardtag) => {
+    await nextTick();
+    if (observer && target.value) {
+      observer.observe(target.value);
     }
   };
-  /*
-  const loadSingle = () => {
-    if (props.shouldLoad) {
-      store.dispatch('services/loadSingle', props.service.identifier);
-    }
-  };
-  */
-  onMounted(() => {
+  const stopObserving = () => (!!observer ? observer.disconnect() : null);
+
+  onMounted(async () => {
     useServiceComposable().lazyService.value = props.service as CardItem;
     useServiceComposable().service.value = props.service as CardItem;
-
-    if ('IntersectionObserver' in window && document.querySelector('.card')) {
-      observer.value = new IntersectionObserver(loadCompleteCard, {
-        threshold: [0.1],
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach(async (entry) => {
+        if (entry.isIntersecting) {
+          await useServicesStore().loadCard(props.service.identifier);
+          lazyService.value = cards.value.find((el) => el.identifier === props.service.identifier);
+          if (!!lazyService.value.name) {
+            return stopObserving();
+          }
+          useServiceComposable().lazyService.value = lazyService.value;
+        }
       });
-      const elements = document.querySelector('.card');
-      if (!!elements) {
-        observer.value.observe(elements);
-      }
-    } else {
-      loadCompleteCard(undefined);
-    }
-  });
-
-  onBeforeUnmount(() => {
-    if (observer.value) {
-      observer.value.disconnect();
-    }
+    });
+    startObserving();
   });
 </script>
 

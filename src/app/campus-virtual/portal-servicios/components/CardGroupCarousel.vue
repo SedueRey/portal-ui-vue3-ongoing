@@ -46,16 +46,15 @@
 </template>
 
 <script setup lang="ts">
-  import type { CardItem, SliderConfig } from '../portal-servicios.types';
+  import type { AreaServiceItems, SliderConfig } from '../portal-servicios.types';
   import { computed, onBeforeUnmount, onMounted, type Ref, ref, watch } from 'vue';
+  import LazyCard from './LazyCard.vue';
   import SideMenu from './SideMenu.vue';
-
-  // import LazyCard from './LazyCard.vue';
 
   const props = defineProps<{
     tidy: boolean;
     options?: SliderConfig;
-    services: CardItem[];
+    services: AreaServiceItems[];
     smallCards?: boolean;
   }>();
 
@@ -89,8 +88,8 @@
     return width + margin - padding;
   };
 
-  const touchEvent = (direction) => {
-    moveCarousel(direction === 'left' ? direction.next : direction.prev);
+  const touchEvent = (evt) => {
+    moveCarousel(evt === 'left' ? direction.next : direction.prev);
   };
 
   const carouselView = () => {
@@ -101,20 +100,20 @@
     emit('carouselFilter', evt);
   };
 
-  const moveCarousel = (direction) => {
+  const moveCarousel = (evt) => {
     const paginationFactorValue = paginationFactor();
     const scrollWidthValue = carousel.value
       ? Math.floor(carousel.value.clientWidth / paginationFactorValue)
       : 0;
     windowSize.value = scrollWidthValue;
-    if (direction === direction.next && !atEndOfList.value) {
+    if (evt === direction.next && !atEndOfList.value) {
       currentOffset.value -= paginationFactorValue * scrollWidthValue;
       startingPoint.value += 1;
-    } else if (direction === direction.prev && !atHeadOfList.value) {
+    } else if (evt === direction.prev && !atHeadOfList.value) {
       currentOffset.value += paginationFactorValue * scrollWidthValue;
       startingPoint.value -= 1;
     }
-    emit('pageActiveChange', activePage.value);
+    emit('pageActiveChange', startingPoint.value);
   };
 
   const initWidths = () => {

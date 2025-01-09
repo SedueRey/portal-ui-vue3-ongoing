@@ -41,7 +41,6 @@
         v-model="draggableServiceList"
         item-key="identifier"
         class="openedCarousel__draggable"
-        tag="transition-group"
         ghost-class="ghost"
         @start="dragging = true"
         @end="dragging = false"
@@ -87,18 +86,22 @@
 </template>
 
 <script setup lang="ts">
-  import type { CardItem, MinimalSlider, Slider, SliderConfig } from '../portal-servicios.types';
+  import type {
+    AreaServiceItems,
+    MinimalSlider,
+    Slider,
+    SliderConfig,
+  } from '../portal-servicios.types';
   import { computed, defineEmits, defineProps, onMounted, ref, type Ref } from 'vue';
   import draggable from 'vuedraggable';
+  import LazyCard from './LazyCard.vue';
   import SideMenu from './SideMenu.vue';
   import { useMobile } from '@/app/shared/composables/useMobile';
   import { useServicesStore } from '../store/services';
 
-  // import LazyCard from './LazyCard.vue';
-
   const props = withDefaults(
     defineProps<{
-      serviceList: CardItem[];
+      serviceList: AreaServiceItems[];
       pagination?: boolean;
       transformable?: boolean;
       tidy?: boolean;
@@ -136,7 +139,7 @@
     props.options && props.options.sliderKey === 'UMRECOMMENDED' ? false : props.tidy,
   );
 
-  const serviceListCurated: Ref<CardItem[]> = computed(() => {
+  const serviceListCurated: Ref<AreaServiceItems[]> = computed(() => {
     return props.pagination
       ? props.serviceList.slice((page.value - 1) * maxItems, page.value * maxItems)
       : props.serviceList;

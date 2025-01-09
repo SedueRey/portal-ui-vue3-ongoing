@@ -74,5 +74,21 @@
   "order": "Ordenar",
   "showall": "Mostrar todos",
   "detail": "Más información sobre ",
-  "new": "Novedad"
+  "new": "Novedad",
+  "loading": "Cargando datos...",
+  "completeListTitle": "Lista completa de servicios",
+  "noVisibleSliderMsg": "Se ha deshabilitado la visibilidad de todos los carriles",
+  "noVisibleSliderMsg2": "o no hay ningún servicio como favorito. Para modificar ",
+  "noVisibleSliderMsg3": "esta pantalla de inicio y ponerla a tu gusto, puedes acceder",
+  "noVisibleSliderBtn": "a la configuración de tus preferencias",
+  "welcome": "Te damos la bienvenida a Mi campus UMU",
+  "link": "¿Qué debes saber de Mi campus?",
+  "welcomeDesc": "Información, servicios y trámites en línea de la Universidad de Murcia.",
+  "tidy": "Ordenar",
+  "tidy_acc": "Ordenar",
+  "showmore_acc": "Ver todos los elementos",
+  "next": "Siguiente",
+  "next_acc": "Página siguiente",
+  "prev": "Anterior",
+  "prev_acc": "Página anterior"
 }
