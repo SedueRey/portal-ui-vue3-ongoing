@@ -92,7 +92,7 @@
     Slider,
     SliderConfig,
   } from '../portal-servicios.types';
-  import { computed, defineEmits, defineProps, onMounted, ref, type Ref } from 'vue';
+  import { computed, onMounted, ref, type Ref } from 'vue';
   import draggable from 'vuedraggable';
   import LazyCard from './LazyCard.vue';
   import SideMenu from './SideMenu.vue';
