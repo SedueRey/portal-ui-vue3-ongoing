@@ -2,7 +2,7 @@
   <div class="home" v-if="isLogged">
     <Hero />
     <div rel="Dashboard" v-if="false" />
-    <div rel="my-events-container" />
+    <my-events-container />
     <div v-if="!areasToShow && showMessage" class="completeList__info">
       <div class="alert alert__warning">
         {{ $t('noVisibleSliderMsg') }}
@@ -68,6 +68,7 @@
   import { computed, onMounted, onUnmounted, ref, type Ref } from 'vue';
   import draggable from 'vuedraggable';
   import Hero from '../components/HeroHome.vue';
+  import MyEventsContainer from '../components/MyEventsContainer.vue';
   import type { Slider } from '../portal-servicios.types';
   import SliderComponent from '../components/SliderComponent.vue';
   import { storeToRefs } from 'pinia';
@@ -78,7 +79,6 @@
 
   /*
   import Dashboard from '@/app/campus-virtual/dashboard/components/Dashboard.vue';
-  import MyEventsContainer from '../components/MyEventsContainer.vue';
   */
 
   const dragging: Ref<boolean> = ref(true);
