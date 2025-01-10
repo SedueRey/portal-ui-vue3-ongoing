@@ -1,5 +1,8 @@
-import DummyView from '@/app/DummyView.vue';
 import HomeView from './views/HomeView.vue';
+import SearchView from './views/SearchView.vue';
+
+const DetailView = () => import('./views/DetailView.vue');
+const AggregatedView = () => import('./views/AggregatedView.vue');
 
 export default [
   {
@@ -15,7 +18,7 @@ export default [
     path: '/search/:tag',
     props: true,
     name: 'search',
-    component: DummyView,
+    component: SearchView,
     meta: {
       requiresAuth: true,
       group: 'campus-virtual',
@@ -26,7 +29,7 @@ export default [
     path: '/detail/:identifier',
     props: true,
     name: 'detail',
-    component: DummyView,
+    component: DetailView,
     meta: {
       requiresAuth: true,
       group: 'campus-virtual',
@@ -37,7 +40,7 @@ export default [
     path: '/view/:route/:identifier?',
     props: true,
     name: 'aggregated',
-    component: DummyView,
+    component: AggregatedView,
     meta: {
       requiresAuth: true,
       group: 'campus-virtual',

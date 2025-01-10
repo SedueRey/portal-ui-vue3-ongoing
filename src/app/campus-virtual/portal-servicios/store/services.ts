@@ -194,7 +194,6 @@ export const useServicesStore = defineStore('services', () => {
       .then((r) => r.data)
       .then((serviceFromAPI) => {
         service.value = serviceFromAPI;
-        usePageStore().setTitle(`${service.value?.name || ''}`);
       });
   };
   const loadDetailByURL = (url) => {

@@ -88,6 +88,7 @@
 <script setup lang="ts">
   import type {
     AreaServiceItems,
+    CardItem,
     MinimalSlider,
     Slider,
     SliderConfig,
@@ -101,7 +102,7 @@
 
   const props = withDefaults(
     defineProps<{
-      serviceList: AreaServiceItems[];
+      serviceList: AreaServiceItems[] | CardItem[];
       pagination?: boolean;
       transformable?: boolean;
       tidy?: boolean;
@@ -139,7 +140,7 @@
     props.options && props.options.sliderKey === 'UMRECOMMENDED' ? false : props.tidy,
   );
 
-  const serviceListCurated: Ref<AreaServiceItems[]> = computed(() => {
+  const serviceListCurated: Ref<AreaServiceItems[] | CardItem[]> = computed(() => {
     return props.pagination
       ? props.serviceList.slice((page.value - 1) * maxItems, page.value * maxItems)
       : props.serviceList;

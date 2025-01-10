@@ -20,7 +20,9 @@ export default function useServiceComposable() {
     'un',
   ];
 
-  const usingService = computed(() => (lazyService.value ? lazyService.value : service.value));
+  const usingService = computed(() => {
+    return !!lazyService.value ? lazyService.value : service.value;
+  });
 
   const roles = computed(() => {
     if (!usingService.value) {
@@ -160,7 +162,7 @@ export default function useServiceComposable() {
 
   const cleanedPotentialAction = computed(() => {
     if (!usingService.value) {
-      return '';
+      return 'MIAU';
     }
     const doc = document.createElement('body');
     doc.innerHTML = usingService.value.potentialAction || '';

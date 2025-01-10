@@ -88,7 +88,7 @@
 
   let observer: IntersectionObserver | null = null;
   const { t } = useI18n();
-  const beacon = useBeacon().beacon;
+  const { beacon } = useBeacon();
   const { cards } = storeToRefs(useServicesStore());
   const { notifications } = storeToRefs(useNotificationsStore());
   const { isNewUser } = storeToRefs(useUserStore());
