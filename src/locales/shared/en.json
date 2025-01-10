@@ -8,5 +8,6 @@
   "logout": "Logout",
   "home": "My campus",
   "Not Found": "Not found",
-  "Unauthorized": "Unauthorized"
+  "Unauthorized": "Unauthorized",
+  "toggleSwitch": "Toggle value"
 }

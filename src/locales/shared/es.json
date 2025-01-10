@@ -8,5 +8,6 @@
   "logout": "Salir",
   "home": "Mi campus",
   "Not Found": "Ruta no encontrada",
-  "Unauthorized": "No tiene acceso para solicitar este servicio"
+  "Unauthorized": "No tiene acceso para solicitar este servicio",
+  "toggleSwitch": "Cambiar valor"
 }

@@ -22,8 +22,7 @@
 <script setup lang="ts">
   import { onBeforeUnmount, onMounted } from 'vue';
   import PreferencesPageNavigation from '../components/Preferences/PreferencesPageNavigation.vue';
-  // TO-DO: Empezar con los sliders
-  // import SliderPreferencesList from '@/app/campus-virtual/portal-servicios/components/SliderPreferencesList.vue';
+  import SliderPreferencesList from '@/app/campus-virtual/portal-servicios/components/SliderPreferencesList.vue';
   import { useI18n } from 'vue-i18n';
   import { usePageStore } from '@/app/shared/store/pages';
   const { t } = useI18n();
