@@ -33,13 +33,9 @@ export async function loadLocaleMessages(i18n, locale) {
   // load locale messages with dynamic import
   let allMessages = {};
   for (const module of appModules) {
-    const messages = await import(`./app/${module}/locales/${locale}.json`);
+    const messages = await import(`./locales/${module}/${locale}.json`);
     allMessages = { ...allMessages, ...messages.default };
   }
-  let messageChild = await import(`./app/campus-virtual/historico-guias/locales/${locale}.json`);
-  allMessages = { ...allMessages, ...messageChild.default };
-  messageChild = await import(`./app/campus-virtual/portal-servicios/locales/${locale}.json`);
-  allMessages = { ...allMessages, ...messageChild.default };
   i18n.global.setLocaleMessage(locale, allMessages);
   return nextTick();
 }
