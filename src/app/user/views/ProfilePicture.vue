@@ -1,7 +1,7 @@
 <template>
   <section class="privatePage__container">
     <ProfilePageNavigation :title="$t('profile')" />
-    <article class="privatePage">
+    <article class="privatePage is-detail">
       <ol class="breadcrumbs">
         <li class="breadcrumbs__item">
           <router-link to="/">
@@ -20,8 +20,7 @@
             <aside class="profile">
               <div class="profile__editPhoto">
                 <img
-                  v-if="imgURL"
-                  :src="imgURL"
+                  v-auth-image="urlPhoto"
                   itemprop="image"
                   :alt="$t('miFoto')"
                   :title="$t('miFoto')"
@@ -36,7 +35,7 @@
               </div>
             </aside>
           </div>
-          <div>
+          <div class="texto-foto-wrapper">
             <div class="grid">
               <div class="col-10">
                 <strong v-if="visiblePhoto">
@@ -57,8 +56,7 @@
                 </span>
               </div>
               <div class="col-2 inputSwitchDiv" :title="$t('changePhotoVisibility')">
-                <ToggleSwitch
-                  v-if="visiblePhoto !== null"
+                <InputSwitch
                   v-model="visiblePhoto"
                   @click="changeVisibilityPhoto"
                   :title="$t('changePhotoVisibility')"
@@ -69,42 +67,35 @@
           </div>
         </div>
         <div class="divContainerRequeriments">
-          <div class="panel-space panel-dark fuente08">
+          <div class="panel-space panel-dark cuadro-requisitos">
             <strong>{{ $t('txtPhotoRequirementsTitle') }}</strong>
-            <ul>
-              <li>{{ $t('txtPhotoRequirements1') }}</li>
-              <li>{{ $t('txtPhotoRequirements2') }}</li>
+            <ul class="fa-ul">
+              <li>
+                <span class="fa-li"><i class="fa-solid fa-check"></i></span>
+                {{ $t('txtPhotoRequirements1') }}
+              </li>
+              <li>
+                <span class="fa-li"><i class="fa-solid fa-check"></i></span>
+                {{ $t('txtPhotoRequirements2') }}
+              </li>
+              <li>
+                <span class="fa-li"><i class="fa-solid fa-check"></i></span>
+                {{ $t('txtPhotoRequirements3') }}
+              </li>
             </ul>
           </div>
         </div>
-        <div class="grid panel-space panel-bottom">
-          <div class="col-12 lg:col-4 fuente08 divCentrado">
-            {{ $t('txtHowToChangePhoto') }}
-          </div>
-          <div class="col-12 lg:col-4 divCentrado">
+        <div class="panel-space panel-bottom">
+          <p class="panel-columns">
+            <span>{{ $t('txtHowToChangePhoto') }}</span>
             <a
               href="https://administracionsv.um.es/tui/paginas/mantenimientos/fotomaton.seam"
-              class="pose__button buttonModPhoto"
+              class="pose__button width-card no-margin"
               target="_blank"
             >
-              <em class="fa-light fa-camera"></em>{{ $t('makePhoto') }}
+              <em class="fa-light fa-camera"></em> {{ $t('makePhoto') }}
             </a>
-          </div>
-          <div class="col-12 lg:col-4 divCentrado">
-            <FileUpload
-              ref="fileupload"
-              :title="$t('uploadPhoto')"
-              mode="basic"
-              accept=".jpg, .jpeg, .png"
-              :maxFileSize="100000"
-              :auto="true"
-              :invalidFileSizeMessage="$t('uploadPhotoTooBig')"
-              :invalidFileTypeMessage="$t('uploadPhotoInvalidFileType')"
-              :customUpload="true"
-              @uploader="customBase64Uploader"
-              :chooseLabel="$t('uploadPhoto')"
-            />
-          </div>
+          </p>
         </div>
       </div>
     </article>
@@ -113,11 +104,9 @@
 
 <script setup lang="ts">
   import { computed, onBeforeUnmount, onMounted, ref, type Ref } from 'vue';
-  import FileUpload from 'primevue/fileupload';
   import ProfilePageNavigation from '../components/Profile/ProfilePageNavigation.vue';
   import { storeToRefs } from 'pinia';
   import Toast from 'primevue/toast';
-  import ToggleSwitch from 'primevue/toggleswitch';
   import { useAuthStore } from '@/app/auth/store/auth';
   import { useI18n } from 'vue-i18n';
   import { usePageStore } from '@/app/shared/store/pages';
@@ -128,7 +117,7 @@
   const toast = useToast();
   const { token } = storeToRefs(useAuthStore());
 
-  const visiblePhoto: Ref<boolean | null> = ref(null);
+  const visiblePhoto: Ref<boolean> = ref(false);
   const alumno: Ref<boolean | null> = ref(null);
   const imgURL: Ref<string | undefined> = ref(undefined);
 
@@ -174,35 +163,6 @@
           life: 6000,
         });
       });
-  };
-
-  const customBase64Uploader = (event) => {
-    const file = event.files[0];
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      if (e.target?.result && typeof e.target.result === 'string') {
-        const base64String = e.target.result.replace(/^data:(.*?);base64,/, '');
-        userApi
-          .setUserPhoto(base64String)
-          .then(() => {
-            toast.add({
-              severity: 'success',
-              summary: t('uploadPhotoOk'),
-              detail: t('uploadPhotoOkDetails'),
-              life: 6000,
-            });
-          })
-          .catch(() => {
-            toast.add({
-              severity: 'error',
-              summary: t('uploadPhotoError'),
-              detail: t('uploadPhotoErrorDetails'),
-              life: 6000,
-            });
-          });
-      }
-    };
-    reader.readAsDataURL(file);
   };
 
   onMounted(() => {
